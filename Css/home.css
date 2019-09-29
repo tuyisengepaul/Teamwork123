@@ -1,0 +1,51 @@
+body
+{
+    border: 0;
+    background-color: #ffffff;
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    font-size: 18pt; 
+    color: darkgray;
+}
+.top-image
+{
+    width: 40%;
+    height: 150px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+}
+.top-image img{
+    height: 150px;
+}
+.application-title
+{
+    width: 40%;
+    margin: 30px auto 0 auto;
+    text-align: center;
+    font-size: 32pt;
+    letter-spacing: 20px;
+}
+.appliction-details
+{
+width: 60%;
+margin: 10px auto 0 auto;
+text-align: center;
+
+}
+.continue-btn
+{
+    width: 25%;
+    height: 45px;
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: rgb(51,153,255);
+    border: hidden;
+    border-top: 30px;
+    font-size: 16pt;
+    color: #fff;
+}
+.continue-btn:hover
+{
+background-color: rgb(51,153,255, 0.7);
+cursor: pointer;
+}
