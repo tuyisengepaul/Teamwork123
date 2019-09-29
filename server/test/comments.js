@@ -50,4 +50,30 @@ describe('post </api/v1/commentes>  create comment api', () => {
     });
   });
   
+  describe('patch </api/v1/commentes>  flag comment api', () => {
+    it('acomment should be flagged', (done) => {
+      chai
+        .request(app)
+        .patch('/api/v1/commentes/1')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+  
+    it('should check if comment exist', (done) => {
+      chai
+        .request(app)
+        .patch('/api/v1/commentes/0')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+  });
+  
   

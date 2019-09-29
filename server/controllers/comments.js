@@ -59,6 +59,29 @@ class comment {
       message: 'Article not found',
     });
   }
+
+  static flagComment(req, res) {
+    const id = parseInt(req.params.id, 10);
+    let message = '';
+    commentes.map((comment) => {
+      if (comment.id === id) {
+        comment.flag += 1;
+        message = comment;
+      }
+    });
+    if (message) {
+      return res.status(200).json({
+        status: '200',
+        message,
+      });
+    }
+    return res.status(404).json({
+      status: '404',
+      message: 'comment not found',
+    });
+  }
+
+
 }
 
 export default comment;
