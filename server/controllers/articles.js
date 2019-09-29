@@ -66,7 +66,25 @@ class allAboutArticle {
       message: 'Article not found'
     });
 }
-
+static getSpecificArticle(req,res){
+    const articleid = parseInt(req.params.id, 10);
+    let data = '';
+    articles.map((article) => {
+        if (article.id === articleid) {
+            data = article
+        }
+    });
+    if (data) {
+        return res.status(200).json({
+            status: '200',
+            data
+        });
+    }
+    return res.status(404).json({
+      status: '404',
+      message: 'Article not found'
+    });
+  }
 }
 
 export default allAboutArticle;
