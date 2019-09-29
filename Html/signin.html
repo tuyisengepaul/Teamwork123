@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Teamwork - Sign In</title>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="Assets/png" href="../Assets/images.png">
+<link rel="stylesheet" href="../Css/login.css">
+<link rel="stylesheet" href="../Css/responsive.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="login-details">
+			<div class="application-logo">
+			<img src="../Assets/images.png" height="100px">
+			<p>Sign In</p>
+					</div>
+         <form method="POST">
+         	<p><label for="email" class="email" >E-mail <span class="asterisk">*</span></label>
+         	<input type="text" name="Email" placeholder="eg. tuspaul@yahoo.fr">
+            </p>
+
+            <p><label for="password" class="password" > Password <span class="asterisk">*</span></label>
+         	<input type="password" name="password" placeholder="eg. !ewa_db12.">
+            </p>
+
+            <p> <label for="user" class="user" > User </label>
+            <select name="dropdown" id="user" select>
+            <option value="Admin">Admin</option>
+            <option value="Staff">Staff</option>
+            </select>
+            </p>
+            </form>
+            </center><button name="login-btn" class="login-btn" login-btn> Sign In</button>
+         	 <center>Not yet have an account ?<span class="sign-up-text"><button name="signup" class="sign-up-btn"> Sign Up</button></span></center>
+         
+		  </div>
+	 </div>
+
+<!-- Sign Up Field Details-->
+<div class="sign-up-details">
+
+   <div class="application-logo">
+         <img src="../Assets/images.png" height="100px">
+         <p>Sign Up</p>
+      </div>
+
+   <form method="POST">
+            <p><label for="fist-name" class="first-name" >First Name <span class="asterisk">*</span></label>
+            <input type="text" name="first-name" placeholder="eg. John">
+            </p>
+
+            <p><label for="last-name" class="last-name" > Last Name <span class="asterisk">*</span></label>
+            <input type="text" name="last-name" placeholder="eg. TUYISENGE">
+            </p>
+
+            <p><label for="new-email" class="new-email" > E-mail <span class="asterisk">*</span></label>
+            <input type="text" name="new-email" placeholder="eg. tuspaul@gmail.com">
+            </p>
+
+            <p><label for="new-password" class="new-password" > Password <span class="asterisk">*</span></label>
+            <input type="password" name="new-password" placeholder="eg. !ewn_dg$12.">
+            </p>
+
+            <p><label for="confirm-password" class="confirm-password" >Confirm Password <span class="asterisk">*</span></label>
+            <input type="confirm-password" name="confirm-password" placeholder="eg. !ewn_dg$12.">
+            </p>
+
+            <input type="submit" name="sign-up-btn" value="Sign up" signup-btn><br/><br/>
+            </form>
+             <center>Do you have an account ?
+             <span class="sign-in-text"><button name="signin" class="sign-in-btn"> Sign In</button></span>
+               </center>
+   </div>
+
+</div>
+<script src="../Js/login.js"></script>
+</body>
+</html>

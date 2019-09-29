@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title> Teamworrk - Staff</title>
+<link rel="shortcut icon" type="image/png" href="../Assets/images.png">
+<link rel="stylesheet" href="../Css/employee.css">
+<link rel="stylesheet" href="../Css/responsive.css">
+</head>
+<body>
+<div class="wrapper">
+	<div class="top-division">
+		<div class="top-bar">
+			<div class="top-left"><a href="../index.html"> <img src="../Assets/images.png">Team  Work</a></div>
+			<div class="menu-bar">
+				<div class="navigation-menu"><span class="menu-icon">&equiv;</span><span class="close-menu-icon">&times;</span></div>
+				<div class="menu">
+					<a href="../index.html" class="home-link">Home</a> | 
+					<a href="javascript:aboutus()" class="about-us-link">About&nbsp;us</a> | 
+					<a href="javascript:contactus()" class="contact-us-link">Contact us</a>
+				</div>
+
+				<div class="menus"><span class="menuIcon">&equiv;</span><span class="closeMenuIcon">&times;</span></div>
+
+		    </div>
+		<div class="top-right"> 
+		<div class="logged-user"><span class="logged">You are logged in as<br/> Staff </span><a href="signin.html">[Log Out]</a></div>
+        <div class="logged-user-profile"><img src="../Assets/TusProfile.jpg"></div>
+		 </div>
+	</div>
+	</div>
+
+<!-- Left Fixed Division -->
+<div class="left-division">
+	<div class="left-menu">
+		QUICK LINKS <br/>
+ <button class="my-article-btn"> My Articles</button> <br/>
+ <button class="shared-article-btn"> Shared Articles <div class="number-shared">4</div></button> <br/>
+ <button class="new-article-btn"> New Article</button> <br/>
+ <button class="all-article-btn"> All Articles</button> <br/>
+	</div>
+	<!-- Div for Subscription-->
+		<div class="subscription">
+    <center>MY SUBSCRIPTIONS </center>
+    <table width="100%" border="0">
+  <tr>
+    <td>Management </td>
+    <td > 
+    <label class="switch">
+    <input type="checkbox" class="subscription" checked>
+    <span class="slider round"></span>
+    </label>
+    </td>
+  </tr>
+  <tr>
+    <td>Customer Care</td>
+    <td> 
+    <label class="switch">
+    <input type="checkbox" class="subscription">
+    <span class="slider round"></span>
+    </label>
+    </td>
+  </tr>
+  <tr>
+    <td>ServiceDesk</td>
+    <td> 
+    <label class="switch">
+    <input type="checkbox" class="subscription">
+    <span class="slider round"></span>
+    </label>
+    </td>
+  </tr>
+  <tr>
+    <td>Project Management</td>
+    <td> 
+    <label class="switch">
+    <input type="checkbox" class="subscription" checked>
+    <span class="slider round"></span>
+    </label>
+    </td>
+  </tr>
+  <tr>
+    <td>Communication</td>
+    <td> 
+    <label class="switch">
+    <input type="checkbox" class="subscription">
+    <span class="slider round"></span>
+    </label>
+    </td>
+  </tr>
+  <tr>
+    <td>Business Computing</td>
+    <td> 
+    <label class="switch">
+    <input type="checkbox" class="subscription" checked>
+    <span class="slider round"></span>
+    </label>
+    </td>
+  </tr>
+</table>
+
+	</div>
+ <!-- END OF SUBSCRIPTION -->
+
+</div>
+<!-- SUCCESS AND ERROR MESSAGES -->
+
+<div class="success-msg-new-article">
+  <i class="fa fa-check"></i>
+<p>You have successfully submitted your article
+ <span class="close">&times;</span> </p>
+</div>
+
+
+<div class="success-msg-update-article">
+  <i class="fa fa-check"></i>
+<p>You have successfully Updated your article
+ <span class="close">&times;</span> </p>
+</div>
+
+<div class="success-msg-delete-article">
+  <i class="fa fa-check"></i>
+<p>You have successfully Deleted your article
+ <span class="close">&times;</span> </p>
+</div>
+
+<div class="success-msg-flag-article">
+  <i class="fa fa-check"></i>
+<p>You have successfully flagged this article
+ <span class="close">&times;</span> </p>
+</div>
+
+<div class="success-msg-flag-comment">
+  <i class="fa fa-check"></i>
+<p>You have successfully flagged this comment
+ <span class="close">&times;</span> </p>
+</div>
+
+<div class="success-msg-comment">
+  <i class="fa fa-check"></i>
+<p>You have successfully Submitted your comment
+ <span class="close">&times;</span> </p>
+</div>
+
+<div class="success-msg-query">
+  <i class="fa fa-check"></i>
+<p>You have successfully Submitted your query
+ <span class="close">&times;</span> </p>
+</div>
+
+<!-- END OF SUCCESS AND ERROR MESSAGES -->
+
+<!-- Main Division -->
+<div class="main-division">
+
+<!-- Content Sub Division -->
+<div class="main-division-content"> 
+
+ <!-- New Article Sub Division within Main Division -->
+<div class="new-article">
+    <div class="article-lbl"> Add your article by filling the form bellow and pressing "Publish your article" button </div>
+
+	<form method="POST" action="#">
+		<input type="text" name="add-title" class="add-title" placeholder="Add Title of you article here ..."> <br/>
+		<textarea rows="20" cols="90" name="description" placeholder="Enter description here..."></textarea><br/>
+       
+       <label for="category" category-label> Choose Category</label>
+       <select name="category" class="category-select"> 
+       <option value="Management" >Management</option>
+       <option value="Management" >Customer Care</option>
+       <option value="Management" >ServiceDesk</option>
+       <option value="Management" >Project Management</option>
+       <option value="Management" >Communication</option>
+       <option value="Customer Care" >Business Computing</option>
+       </select><br/>
+
+		<input type="file" name="add-featured-photo" class="add-featured-photo"><span class="ft-img-lbl">Upload Featured Image</span><br/>
+	</form>
+	<input type="submit" name="publish" class="publish" value="Publish Your Article">
+</div>
+
+ <!-- My Articles Sub Division within Main Division -->
+<!--############### My Published Article Descriptino ##################-->
+<div class="my-article-content">
+<!-- Article 1 -->
+<div class="my-article">
+	<div class="my-article-ft-pt">
+		<img src="../Assets/TusProfile.jpg"/>
+	</div>
+	<div class="my-article-ttl">
+		Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. 
+	</div>
+	<div class="my-article-cat">
+		Published by: Admin | 12 Aug 2018, 13:40 | Category: serviceDesk
+	</div>
+	<div class="my-article-action">
+		<button class="btn-article-ctn" onClick="read();"> Read More </button>
+		<button class="btn-article-ctn-edit" onClick="edit();"> Edit </button>
+		<button class="btn-article-ctn-delete" onClick="deleteArticle()"> Delete </button>
+	</div>
+</div>
+
+<!-- Article 2 -->
+<div class="my-article">
+	<div class="my-article-ft-pt">
+		<img src="../Assets/imyumbati.png"/>
+	</div>
+	<div class="my-article-ttl">
+		Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. 
+	</div>
+	<div class="my-article-cat">
+		Published by: Admin | 12 Aug 2018, 13:40 | Category: serviceDesk
+	</div>
+	<div class="my-article-action">
+		<button class="btn-article-ctn" onClick="read();"> Read More </button>
+		<button class="btn-article-ctn-edit" onClick="edit();"> Edit </button>
+		<button class="btn-article-ctn-delete" onClick="deleteArticle()"> Delete </button>
+	</div>
+</div>
+
+<!-- Article 3 -->
+<div class="my-article">
+	<div class="my-article-ft-pt">
+		<img src="../Assets/TusProfile.jpg"/>
+	</div>
+	<div class="my-article-ttl">
+		Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. 
+	</div>
+	<div class="my-article-cat">
+		Published by: Admin | 12 Aug 2018, 13:40 | Category: serviceDesk
+	</div>
+	<div class="my-article-action">
+		<button class="btn-article-ctn" onClick="read();"> Read More </button>
+		<button class="btn-article-ctn-edit" onClick="edit();"> Edit </button>
+		<button class="btn-article-ctn-delete" onClick="deleteArticle()"> Delete </button>
+	</div>
+</div>
+
+<!-- Article 4 -->
+<div class="my-article">
+	<div class="my-article-ft-pt">
+		<img src="../Assets/imyumbati.png" />
+	</div>
+	<div class="my-article-ttl">
+		Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. 
+	</div>
+	<div class="my-article-cat">
+		Published by: Admin | 12 Aug 2018, 13:40 | Category: serviceDesk
+	</div>
+	<div class="my-article-action">
+		<button class="btn-article-ctn" onClick="read();"> Read More </button>
+		<button class="btn-article-ctn-edit" onClick="edit();"> Edit </button>
+		<button class="btn-article-ctn-delete" onClick="deleteArticle()"> Delete </button>
+	</div>
+</div>
+
+<!-- Article 5 -->
+<div class="my-article">
+	<div class="my-article-ft-pt">
+		<img src="../Assets/TusProfile.jpg" >
+	</div>
+	<div class="my-article-ttl">
+		Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. 
+	</div>
+	<div class="my-article-cat">
+		Published by: Admin | 12 Aug 2018, 13:40 | Category: serviceDesk
+	</div>
+	<div class="my-article-action">
+		<button class="btn-article-ctn" onClick="read();"> Read More </button>
+		<button class="btn-article-ctn-edit" onClick="edit();"> Edit </button>
+		<button class="btn-article-ctn-delete" onClick="deleteArticle()"> Delete </button>
+	</div>
+</div>
+
+<!-- Article 6 -->
+<div class="my-article">
+	<div class="my-article-ft-pt">
+		<img src="../Assets/imyumbati.png" />
+	</div>
+	<div class="my-article-ttl">
+		Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. 
+	</div>
+	<div class="my-article-cat">
+		Published by: Admin | 12 Aug 2018, 13:40 | Category: serviceDesk
+	</div>
+	<div class="my-article-action">
+		<button class="btn-article-ctn" onClick="read();"> Read More </button>
+		<button class="btn-article-ctn-edit" onClick="edit();"> Edit </button>
+		<button class="btn-article-ctn-delete" onClick="deleteArticle()"> Delete </button>
+	</div>
+</div>
+
+</div>
+
+<!--############### End My Published Article Descriptino ##################-->
+
+
+<!--############### all Article ##################-->
+<!--Article 1-->
+<div class="all-articles">
+<div class="category"> Project Management </div>
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+<!--Article 2-->
+<div class="category"> Communication </div>
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+<!--Article 3-->
+<div class="category"> ServiceDesk </div>
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+<!--Article 4-->
+<div class="category"> Customer Care </div>
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+<!--Article 5-->
+<div class="category"> Management </div>
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+
+</div>
+
+<!-- ##############   Shared Article  ####################-->
+<div class="shared-article">
+
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+
+<div class="article-division">
+	<div class="featured-photo"><img src="../Assets/download.png"></div>
+	<div class="title"><a href="javascript:read()">THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL</a></div>
+	<div class="published"> Published by: Admin | 12 Aug 2018, 13:40 </div>
+</div>
+
+</div>
+
+
+<!--####################    READ ARTICLE   ##################-->
+<div class="read-article">
+
+	<div class="read-full-article">
+		<div class="read-featured-photo"><img src="../Assets/image.jpg"></div>
+		<div class="read-title"> Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub.</div>
+		<div class="read-action"> Published by: Admin | 12 Aug 2018, 13:40</div>
+		<div class="read-article-details">
+In this section we’re to animate from one shape to another, where the initial and final shapes are visually defined by a different number of points. We’re going to use the polygon() function to define our shapes.<br/><br/>
+
+As I mentioned at the beginning of this article, only shapes with the same number of points can be animated into one another. So, in order to animate from a shape to another, we have to make sure that the number of points in the definition of these shapes is the same, even if they don’t visually appear to have the same number.
+
+<div class="flag">If this article is inapropriete, Please flag it.
+	<button class="flag-btn" onClick="flagArticle()">Flag as inapropriete <img src="../Assets/Red-flag.png" height="100%"> </button></div>
+		</div>
+ 
+ <!-- List of Comments -->
+        <div class="comments-lbl"> Comments (2) </div>
+        <div class="comments">
+        <div class="comments-header"> Kadenge Innocent | 12-Aug-2019</div>
+        <div class="flag-comment"><button class="flag-btn" onclick="flagComment()">Flag  <img src="../Assets/Red-flag.png" height="100%"> </button>
+        </div>
+        <div class="comments-contents"> Anybody have any thoughts on MMC Snap-in development in 2019?  I'm thinking about starting a new project with it.</div>
+        </div>
+
+        <div class="comments">
+        <div class="comments-header"> Karindwi Joseph | 34 min ago</div>
+        <div class="flag-comment"><button class="flag-btn" onClick="flagComment()">Flag  <img src="../Assets/Red-flag.png" height="100%"> </button>
+        </div>
+        <div class="comments-contents"> Anybody have any thoughts on MMC Snap-in development in 2019?  I'm thinking about starting a new project with it.
+        </div>
+
+
+		<div class="read-comment"> <center>Leave your Comment here</center>
+        <textarea class="comment-article" cols="7" placeholder="Leave you comment here..."></textarea>
+        <button class="submit-comment" onClick="comment()"> Submit your comment</button>
+		</div>
+	</div>
+</div>
+</div>
+
+<!--############### Edit My published Article ##################-->
+<div class="edit-my-article">
+<div class="article-lbl"> Update your article after making required changes within the form bellow and pressing "Update your article" button </div>
+
+	<form method="POST">
+		<input type="text" name="edit-title" class="edit-title" value="THIS IS THE TITLE OF THIS UI CREATED BY JEAN PAUL TUYISENGE AND WISH TO RENOUNCE THE EDITORIAL"> <br/>
+		<textarea rows="20" cols="90" name="description">
+In this section we’re to animate from one shape to another, where the initial and final shapes are visually defined by a different number of points. We’re going to use the polygon() function to define our shapes.
+
+As I mentioned at the beginning of this article, only shapes with the same number of points can be animated into one another. So, in order to animate from a shape to another, we have to make sure that the number of points in the definition of these shapes is the same, even if they don’t visually appear to have the same number.
+
+In this section we’re to animate from one shape to another, where the initial and final shapes are visually defined by a different number of points. We’re going to use the polygon() function to define our shapes.
+
+As I mentioned at the beginning of this article, only shapes with the same number of points can be animated into one another. So, in order to animate from a shape to another, we have to make sure that the number of points in the definition of these shapes is the same, even if they don’t visually appear to have the same number.
+
+In this section we’re to animate from one shape to another, where the initial and final shapes are visually defined by a different number of points. We’re going to use the polygon() function to define our shapes.
+
+As I mentioned at the beginning of this article, only shapes with the same number of points can be animated into one another. So, in order to animate from a shape to another, we have to make sure that the number of points in the definition of these shapes is the same, even if they don’t visually appear to have the same number.
+       </textarea><br/>
+       
+       <label for="category" category-label> Choose Category</label>
+       <select name="category" class="category-select"> 
+       <option value="Management" >Management</option>
+       <option value="Management" >Customer Care</option>
+       <option value="Management" >ServiceDesk</option>
+       <option value="Management" selected>Project Management</option>
+       <option value="Management" >Communication</option>
+       <option value="Customer Care" >Business Computing</option>
+       </select><br/>
+
+		<input type="file" name="edit-featured-photo" class="add-featured-photo"><span class="ft-img-lbl">Upload Featured Image</span><br/>
+	</form>
+	<input type="submit" name="update" class="publish" class="update" value="Update Your Article" onClick="update();">
+</div>
+<!--############### End of Edit My published Article ##################-->
+
+
+<!-- ##############   Contact us Form  ####################-->
+<div class="about-us-cnts">
+
+ <div class="top-image">
+<img src="../Assets/images.png">
+    </div>
+<div class="application-title"> 
+    TEAMWORK
+<hr>
+</div>
+<div class="appliction-details">
+        Teamwork is an ​internal social network for organizations’ employees.  <br/>  
+    The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.
+    
+</div>
+</div>
+
+<!-- ##############   Contact us Form  ####################-->
+<div class="contact-us-cnts">
+	<div class="contact-us-ttl">
+	If you have any query or question about the functinality of this portal please write to us through this form. </div>
+<form method="POST">
+<textarea rows="15" cols="90" name="description" placeholder="Type your query here ..."></textarea>
+</form>
+<input type="submit" name="submit-query" class="submit-query" value="Submit Your Query" onClick="submitquery();">
+</div>
+<!-- ##############   End Contact us Form  ####################-->
+
+</div>
+</div>
+</div>
+<script src="../Js/employee.js"></script>
+</body>
+
+</html>
