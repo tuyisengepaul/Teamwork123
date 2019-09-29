@@ -66,6 +66,19 @@ class allAboutArticle {
       message: 'Article not found'
     });
 }
+
+static getAllarticle(req,res){
+    const data = articles.sort(function(a, b){
+        const dateA = new Date(a.createdOn), dateB = new Date(b.createdOn);
+      return dateB-dateA
+    });
+    return res.status(200).json({
+        status: '200',
+        message: 'success',
+        data
+       });
+}
+
 static getSpecificArticle(req,res){
     const articleid = parseInt(req.params.id, 10);
     let data = '';
