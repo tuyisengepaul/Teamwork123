@@ -76,4 +76,41 @@ describe('post </api/v1/commentes>  create comment api', () => {
     });
   });
   
+  describe('delete </api/v1/commentes>  delete comment api', () => {
+    it('flagged acomment should be deleted', (done) => {
+      chai
+        .request(app)
+        .delete('/api/v1/commentes/3')
+        .set('Authorization', `Bearer ${admintoken}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+  
+    it('should check if comment exist', (done) => {
+      chai
+        .request(app)
+        .delete('/api/v1/commentes/0')
+        .set('Authorization', `Bearer ${admintoken}`)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+
+    it('should check if a staff is allowed to delete', (done) => {
+      chai
+        .request(app)
+        .delete('/api/v1/commentes/3')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+  });
   
