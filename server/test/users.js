@@ -2,9 +2,12 @@ import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../index';
 import user from './mockdata/users';
+import Token from '../helpers/token';
 
 chai.use(chaiHttp);
 chai.should();
+const adminToken = Token('admin@gmail.com');
+const staffToken = Token('bugingo​@gmail.com');
 
 describe('POST <api/v1/auth/signup>  sign up', () => {
   it('User should sign up', () => {
@@ -82,6 +85,30 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
       .send(user[3])
       .end((err, res) => {
         res.should.have.status(404);
+        res.body.should.have.be.a('object');
+      });
+  });
+});
+
+describe('GET <api/v1/auth/>  Get all Users', () => {
+  it('Admin should get all users', () => {
+    chai
+      .request(app)
+      .get('api/v1/auth/')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.be.a('object');
+      });
+  });
+
+  it('Checker if staff is allowed to get all users', () => {
+    chai
+      .request(app)
+      .get('api/v1/auth/')
+      .set('Authorization', `Bearer ${staffToken}`)
+      .end((err, res) => {
+        res.should.have.status(401);
         res.body.should.have.be.a('object');
       });
   });
