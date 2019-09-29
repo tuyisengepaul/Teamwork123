@@ -1,9 +1,10 @@
 import incodePass from 'bcrypt';
 import Joi from '@hapi/joi';
-import { userSignup } from '../helpers/validation';
+import { userSignup, userSignin } from '../helpers/validation';
 import customize from '../helpers/customize';
 import users from '../models/users';
 import IdProider from '../helpers/idprovider';
+import Token from '../helpers/token';
 
 class User {
   static register(req, res) {
@@ -42,6 +43,49 @@ class User {
     return res.status(201).json({
       status: '201',
       message: 'user added',
+      data,
+    });
+  }
+
+  static signin(req, res) {
+    let data = '';
+    const { email } = req.body;
+
+    const { error } = Joi.validate(req.body, userSignin);
+    if (error) {
+      return customize.validateError(req, res, error, 400);
+    }
+
+    const userData = req.body;
+    let token = '';
+    users.map((user) => {
+      if (user.email === userData.email && incodePass.compareSync(userData.password, user.password)) {
+        token = Token(email);
+        data = {
+          id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          password: user.password,
+          gender: user.gender,
+          jobRole: user.jobRole,
+          department: user.department,
+          address: user.address,
+        };
+      }
+    });
+
+
+    if (!data) {
+      return res.status(404).send({
+        status: 404,
+        message: 'User not found, Incorrect email or password',
+      });
+    }
+    return res.status(200).send({
+      status: '200',
+      message: 'login successfuly',
+      token,
       data,
     });
   }
