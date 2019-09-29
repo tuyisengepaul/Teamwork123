@@ -81,7 +81,26 @@ class comment {
     });
   }
 
-
+  static deleteComment(req, res) {
+    const commentid = parseInt(req.params.id, 10);
+    let message = '';
+    commentes.map((comment, index) => {
+      if (comment.id === commentid && comment.flag > 0) {
+        commentes.splice(index, 1);
+        message = 'comment deleted successfuly';
+      }
+    });
+    if (message) {
+      return res.status(200).json({
+        status: '200',
+        message,
+      });
+    }
+    return res.status(404).json({
+      status: '404',
+      message: 'Imposible to delete unflagging or unexistence comment',
+    });
+  }
 }
 
 export default comment;
