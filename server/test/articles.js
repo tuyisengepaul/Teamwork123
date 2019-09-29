@@ -128,6 +128,20 @@ describe('post </api/v1/articles>  create article api', () => {
     });
   });
 
+  describe('get </api/v1/articles>  Get all Article api', () => {
+    it('we should get all article', (done) => {
+      chai
+        .request(app)
+        .get('/api/v1/articles')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+  });
+
   describe('Get </api/v1/articles> Get a specific Article api', () => {
     it('Get a specific article', (done) => {
       chai
