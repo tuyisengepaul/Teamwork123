@@ -89,6 +89,14 @@ class User {
       data,
     });
   }
+
+  static AllUsers(req, res) {
+    return res.status(200).json({
+      status: '200',
+      message: 'success',
+      users,
+    });
+  }
 }
 
 export default User;
