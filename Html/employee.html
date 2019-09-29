@@ -1,0 +1,77 @@
+﻿<html>
+<head>
+<title> Teamworrk - Staff</title>
+<link rel="shortcut icon" type="image/png" href="../Assets/images.png">
+<link rel="stylesheet" href="../Css/employee.css">
+</head>
+<body>
+<div class="wrapper">
+	<div class="top-division">
+		<div class="top-bar">
+			<div class="top-left"><a href="../index"> <img src="../Assets/images.png">Team  Work</a></div>
+			<div class="menu-bar">
+				<div class="menu">
+					<a href="../index.html" class="home-link">Home</a> | 
+					<a href="javascript:aboutus()" class="about-us-link">About&nbsp;us</a> | 
+					<a href="javascript:contactus()" class="contact-us-link">Contact us</a>
+				</div>
+		    </div>
+		<div class="top-right"> 
+		<div class="logged-user">You are logged in as<br/> Staff <a href="signin.html">[Log Out]</a></div>
+        <div class="logged-user-profile"><img src="../Assets/TusProfile.jpg"></div>
+		 </div>
+	</div>
+	</div>
+
+<!-- Left Fixed Division -->
+<div class="left-division">
+	<div class="left-menu">
+		QUICK LINKS <br/>
+ <button class="new-article-btn"> New Article</button> <br/>
+	</div>
+	<!-- Div for Subscription-->
+</div>
+
+<!-- Main Division -->
+<div class="main-division">
+
+<!-- Content Sub Division -->
+<div class="main-division-content">
+
+ <!-- ################  Article Details ################-->
+
+
+ <!-- New Article Sub Division within Main Division -->
+<div class="new-article">
+    <div class="article-lbl"> Add your article by filling the form bellow and pressing "Publish your article" button </div>
+
+	<form method="POST">
+		<input type="text" name="add-title" class="add-title" placeholder="Add Title of you article here ..."> <br/>
+		<textarea rows="20" cols="90" name="description" placeholder="Enter description here..."></textarea><br/>
+
+       <label for="category" category-label> Choose Category</label>
+       <select name="category" class="category-select"> 
+       <option value="Management" >Management</option>
+       <option value="Management" >Customer Care</option>
+       <option value="Management" >ServiceDesk</option>
+       <option value="Management" >Project Management</option>
+       <option value="Management" >Communication</option>
+       <option value="Customer Care" >Business Computing</option>
+       </select><br/>
+
+		<input type="file" name="add-featured-photo" class="add-featured-photo"><span class="ft-img-lbl">Upload Featured Image</span><br/>
+		<input type="submit" name="publish" class="publish" value="Publish Your Article">
+	</form>
+</div>
+
+ <!-- Read an article Sub Division within Main Division -->
+
+ <!-- My Articles Sub Division within Main Division -->
+
+</div>
+
+</div>
+<script src="../Js/employee.js"></script>
+</body>
+
+</html>
