@@ -67,6 +67,27 @@ class allAboutArticle {
     });
 }
 
+static deleteArticle(req, res) {
+    const articleid = parseInt(req.params.id, 10);
+    let message = '';
+    articles.map((article, index) => {  
+        if (article.id === articleid) {
+            articles.splice(index, 1);
+            message = 'Article deleted successfuly'
+        }
+    });
+    if (message) {
+        return res.status(200).json({
+            status: '200',
+            message
+        });
+    }
+    return res.status(404).json({
+        status: '404',
+        message: 'Article not found'
+    });
+}
+
 static getAllarticle(req,res){
     const data = articles.sort(function(a, b){
         const dateA = new Date(a.createdOn), dateB = new Date(b.createdOn);

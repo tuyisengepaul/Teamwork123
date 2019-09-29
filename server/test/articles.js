@@ -142,6 +142,44 @@ describe('post </api/v1/articles>  create article api', () => {
     });
   });
 
+  describe('patch </api/v1/articles>  delete Article api', () => {
+    it('article should be deleted', (done) => {
+      chai
+        .request(app)
+        .delete('/api/v1/articles/2')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+
+    it('should check if article exist', (done) => {
+      chai
+        .request(app)
+        .delete('/api/v1/articles/0')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+    it('should check if any user is allowed to delete others article', (done) => {
+      chai
+        .request(app)
+        .delete('/api/v1/articles/1')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+  });
+  
+
   describe('Get </api/v1/articles> Get a specific Article api', () => {
     it('Get a specific article', (done) => {
       chai
