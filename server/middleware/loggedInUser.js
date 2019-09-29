@@ -1,3 +1,4 @@
+import artcles from '../models/articles';
 
 class loggedinUser {
     static isAllowedToDcmt(req, res, next) {
