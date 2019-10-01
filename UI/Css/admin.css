@@ -73,13 +73,14 @@ font-weight: bold;
 .left-division
 {
 	width: 20%;
-	height: auto;
+	height: 100%;
 	background: #fff;
-	margin-top: 100px;
+	margin-top: 65px;
 	display: block;
 	position: fixed; 
-	border-radius: 0 12px 12px 0;
+	border-radius: 0 0 0 0;
 	border: 1px solid #ccc;
+	border-top-color: transparent;
 }
 .main-division
 {
@@ -109,6 +110,7 @@ font-weight: bold;
 	margin-top: 20px;
 	padding-bottom: 20px;
 }
+.left-loggout{display: none;}
 .read-article, .my-articles, .shared-article, .my-article-content, .edit-my-article, .all-articles,
 .new-article, .all-articles, .about-us-cnts, .contact-us-cnts, .flagged-article-division
 {

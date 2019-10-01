@@ -377,7 +377,7 @@ textarea
 	padding: 14px 14px 14px 14px;
     font-family: arial;
 }
-
+.left-loggout{display: none;}
 .category-select
 {
 	width: 65%;
