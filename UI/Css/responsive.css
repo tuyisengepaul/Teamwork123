@@ -361,9 +361,5 @@ margin-bottom: 30px;
 	min-height: 100%;
 	margin: auto;
 }
-table-layout: {
-	border: 2px;
-}
-
 .left-loggout{display: block;}
 }
