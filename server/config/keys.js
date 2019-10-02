@@ -1,3 +1,3 @@
-const tokenKeys='<token key>';
+const tokenKeys = '<token key>';
 
 export default tokenKeys;

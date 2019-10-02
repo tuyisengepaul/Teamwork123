@@ -22,7 +22,7 @@ const users = [
     department: 'it',
     address: 'gikondo',
     type: 'staff',
-  }
+  },
 
 ];
 export default users;

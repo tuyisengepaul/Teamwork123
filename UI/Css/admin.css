@@ -2,6 +2,7 @@ body
 {
 	margin:0;
 	color: #6f6f6f;
+	font-family: 'arial', 'Nanum Gothic', sans-serif;
 }
 .hide
 {
@@ -35,11 +36,11 @@ body
 {
 	width: 50%;
 	height: 30px;
-	padding-top: 70px;
+	padding-top: 50px;
 	margin-left:25%;
 	font-size: 16pt;
 	text-align: center;
-	font-variant: small-caps;
+	font-variant: uppercase;
 	font-weight: bold;
 }
 .top-left
@@ -53,7 +54,6 @@ font-size: 28pt;
 text-align: center;
 word-spacing: 0;
 vertical-align: middle;
-font-variant: small-caps;
 line-height: 0;
 }
 .top-left img{
@@ -73,13 +73,14 @@ font-weight: bold;
 .left-division
 {
 	width: 20%;
-	height: auto;
+	height: 100%;
 	background: #fff;
-	margin-top: 100px;
+	margin-top: 65px;
 	display: block;
 	position: fixed; 
-	border-radius: 0 12px 12px 0;
+	border-radius: 0 0 0 0;
 	border: 1px solid #ccc;
+	border-top-color: transparent;
 }
 .main-division
 {
@@ -109,6 +110,7 @@ font-weight: bold;
 	margin-top: 20px;
 	padding-bottom: 20px;
 }
+.left-loggout{display: none;}
 .read-article, .my-articles, .shared-article, .my-article-content, .edit-my-article, .all-articles,
 .new-article, .all-articles, .about-us-cnts, .contact-us-cnts, .flagged-article-division
 {
@@ -130,6 +132,11 @@ font-weight: bold;
 	padding-top: 50px;
 	padding-bottom: 100px;
 }
+.logged
+{
+font-size: 12pt;
+font-weight: normal;
+}
 .logged-user
 {
 	width: 55%;
@@ -139,6 +146,8 @@ font-weight: bold;
 	float: left;
 	margin-left: 10%;
 	color: #666;
+	font-size: 12pt;
+	font-weight: normal;
 }
 .logged-user-profile
 {
@@ -171,7 +180,7 @@ font-weight: bold;
 	padding-top: 10px;
 	float: left;
 	margin-left: 5%; 
-	font-family: "MS Serif", "New York", serif;
+	font-family: 'arial', 'Nanum Gothic', sans-serif;
 	font-weight: bold;
 }
 .published
@@ -213,7 +222,6 @@ font-weight: bold;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	font-size: 13pt;
-	font-variant: small-caps;
 	text-align: center;
 	font-weight: bold;
 
@@ -263,7 +271,6 @@ font-weight: bold;
 	float: left;
 	font-weight: bold;
 	font-size: 17pt;
-	font-variant: small-caps;
 }
 .read-article-details
 {
@@ -295,7 +302,6 @@ font-weight: bold;
 	clear: both;
 	font-size: 14pt;
 	font-weight: bold;
-	font-variant: small-caps;
 }
 .my-article-btn, .all-article-btn, .new-article-btn, .shared-article-btn, .flagged-article-btn
 {
@@ -343,7 +349,6 @@ cursor: pointer;
 	background-color:#3399FF;
 	border-top-right-radius: 4px; 
 	border-top-left-radius: 4px; 
-	font-variant: small-caps;
 	font-size: 13pt;
 	font-weight: bold;
 	color: #fff;
@@ -374,7 +379,6 @@ cursor: pointer;
 {
 	width: 90%;
 	font-size: 14pt;
-	font-variant: small-caps;
 	font-weight: bold;
 	margin-left: 5%;
 	text-align: center;
@@ -397,7 +401,7 @@ textarea
 	border-radius: 4px;
 	font-size: 12pt;
 	padding: 14px 14px 14px 14px;
-    font-family: arial;
+    font-family: 'arial', 'Nanum Gothic', sans-serif;
 }
 .contact-us-cnts textarea
 {
@@ -639,7 +643,6 @@ font-size: 16pt;
 	margin: 10px 10% 10px 10%;
 	font-size: 14pt;
 	font-weight: bold;
-	font-variant: small-caps;
 	text-align: center;
 }
 .logged-user-profile img

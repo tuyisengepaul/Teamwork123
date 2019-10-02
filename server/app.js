@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import usersRouter from '../server/routes/users'
-import articleRouter from '../server/routes/articles';
-import comment from '../server/routes/comments';
+import usersRouter from './routes/users';
+import articleRouter from './routes/articles';
+import comment from './routes/comments';
 
 const app = express();
 app.use(express.json());

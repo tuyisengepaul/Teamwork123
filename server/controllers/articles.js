@@ -1,7 +1,6 @@
-/* eslint-disable space-before-blocks */
 import Joi from '@hapi/joi';
 import { article } from '../helpers/validation';
-import customize from '../helpers/customize';
+import customize from '../helpers/Customize';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
 
@@ -46,13 +45,35 @@ class allAboutArticle {
     const articleid = parseInt(req.params.id, 10);
     let message = '';
     articles.map((article) => {
-      if (flag && article.id === articleid){
+      if (flag && article.id === articleid) {
         article.flag += 1;
         message = 'Article flagged successfuly';
       } else if (article.id === articleid) {
         article.title = req.body.title;
         article.article = req.body.article;
-        message = 'Article updated successfuly'
+        message = 'Article updated successfuly';
+      }
+    });
+
+    if (message) {
+      return res.status(200).json({
+        status: '200',
+        message,
+      });
+    }
+    return res.status(404).json({
+      status: '404',
+      message: 'Article not found',
+    });
+  }
+
+  static deleteArticle(req, res) {
+    const articleid = parseInt(req.params.id, 10);
+    let message = '';
+    articles.map((article, index) => {
+      if (article.id === articleid) {
+        articles.splice(index, 1);
+        message = 'Article deleted successfuly';
       }
     });
     if (message) {
@@ -63,60 +84,40 @@ class allAboutArticle {
     }
     return res.status(404).json({
       status: '404',
-      message: 'Article not found'
+      message: 'Article not found',
     });
-}
+  }
 
-static deleteArticle(req, res) {
-    const articleid = parseInt(req.params.id, 10);
-    let message = '';
-    articles.map((article, index) => {  
-        if (article.id === articleid) {
-            articles.splice(index, 1);
-            message = 'Article deleted successfuly'
-        }
-    });
-    if (message) {
-        return res.status(200).json({
-            status: '200',
-            message
-        });
-    }
-    return res.status(404).json({
-        status: '404',
-        message: 'Article not found'
-    });
-}
-
-static getAllarticle(req,res){
-    const data = articles.sort(function(a, b){
-        const dateA = new Date(a.createdOn), dateB = new Date(b.createdOn);
-      return dateB-dateA
+  static getAllarticle(req, res) {
+    const data = articles.sort((a, b) => {
+      const dateA = new Date(a.createdOn);
+      const dateB = new Date(b.createdOn);
+      return dateB - dateA;
     });
     return res.status(200).json({
-        status: '200',
-        message: 'success',
-        data
-       });
-}
+      status: '200',
+      message: 'success',
+      data,
+    });
+  }
 
-static getSpecificArticle(req,res){
+  static getSpecificArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
     let data = '';
     articles.map((article) => {
-        if (article.id === articleid) {
-            data = article
-        }
+      if (article.id === articleid) {
+        data = article;
+      }
     });
     if (data) {
-        return res.status(200).json({
-            status: '200',
-            data
-        });
+      return res.status(200).json({
+        status: '200',
+        data,
+      });
     }
     return res.status(404).json({
       status: '404',
-      message: 'Article not found'
+      message: 'Article not found',
     });
   }
 }
