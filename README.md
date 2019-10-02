@@ -5,7 +5,6 @@
 
 Teamwork is an ​internal social network for organizations’ employees. The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.
 
----
 ## Table of contents
 
 [Project Links](#links) 
@@ -25,9 +24,6 @@ Teamwork is an ​internal social network for organizations’ employees. The go
 [Acknowledgment](#acknowledgments)
 
 [Author](#author)
-
-
----
  
 ## Links
 
@@ -37,8 +33,6 @@ Pivotal Tracker Stories can found here [Pivotal tracker](https://www.pivotaltrac
 
 Application was deployed to Heroku. Use public URL []().
 
----
-
 ## Technologies
 
 
@@ -46,8 +40,6 @@ Application was deployed to Heroku. Use public URL []().
 - [Express.js](https://expressjs.com) - Web application framework based on Node.js.
 - [ESLint](https://eslint.org/) - ESLint is an open source project whose aim is to provide a pluggable linting utility for JavaScript.
 - [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) styling guide.
-
----
 
 ## Tools
 
@@ -67,8 +59,6 @@ Application was deployed to Heroku. Use public URL []().
 - [Heroku](https://www.heroku.com/) Heroku is a cloud platform as a service supporting several programming languages.Developers use Heroku to deploy, manage, and scale modern apps.
 - [Travis CI](https://travis-ci.org/) is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
 - [Coveralls](https://codeclimate.com/) Coveralls is a web service to help you track your code coverage over time, and ensure that all your new code is fully covered.
-
----
 
 ## Getting started
 
