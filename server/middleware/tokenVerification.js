@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
-import keys from '../config/keys';
+import dotenv from 'dotenv';
 import users from '../models/users';
 
+dotenv.config();
 const isLoggedin = (req, res, next) => {
   if (req.headers.authorization === undefined) {
     return res.status(401).send({
@@ -18,7 +19,7 @@ const isLoggedin = (req, res, next) => {
   }
 
   try {
-    const decodedToken = jwt.verify(token, keys);
+    const decodedToken = jwt.verify(token, process.env.tokenKeys);
     let userData = '';
     users.map((user) => {
       if (user.email === decodedToken.payLoad) {

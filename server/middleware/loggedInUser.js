@@ -58,8 +58,8 @@ class loggedinUser {
 
   static isAdmin(req, res, next) {
     if (req.user.type !== 'admin') {
-      return res.status(401).json({
-        status: '401',
+      return res.status(403).json({
+        status: '403',
         message: 'You are not allowed this kind of request, Only Admin',
       });
     }

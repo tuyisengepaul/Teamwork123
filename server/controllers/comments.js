@@ -1,20 +1,13 @@
-/* eslint-disable no-shadow */
-import Joi from '@hapi/joi';
 import commentes from '../models/comments';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
-import { commente } from '../helpers/validation';
-import customize from '../helpers/Customize';
+
 
 class comment {
   static createComment(req, res) {
     const articleid = parseInt(req.params.id, 10);
     let existArticle = '';
     let message = '';
-    const { error } = Joi.validate(req.body, commente);
-    if (error) {
-      return customize.validateError(req, res, error, 400);
-    }
     articles.map((article) => {
       if (article.id === articleid) {
         existArticle = article;

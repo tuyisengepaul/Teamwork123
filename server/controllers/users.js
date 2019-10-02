@@ -1,7 +1,4 @@
 import incodePass from 'bcrypt';
-import Joi from '@hapi/joi';
-import { userSignup, userSignin } from '../helpers/validation';
-import customize from '../helpers/Customize';
 import users from '../models/users';
 import IdProider from '../helpers/idprovider';
 import Token from '../helpers/token';
@@ -10,11 +7,6 @@ class User {
   static register(req, res) {
     const Userone = req.body;
     let message = '';
-    const { error } = Joi.validate(Userone, userSignup);
-    if (error) {
-      return customize.validateError(req, res, error, 400);
-    }
-
     users.forEach((newUser) => {
       if (newUser.email === Userone.email) {
         message = 'user already exists';
@@ -50,12 +42,6 @@ class User {
   static signin(req, res) {
     let data = '';
     const { email } = req.body;
-
-    const { error } = Joi.validate(req.body, userSignin);
-    if (error) {
-      return customize.validateError(req, res, error, 400);
-    }
-
     const userData = req.body;
     let token = '';
     users.map((user) => {

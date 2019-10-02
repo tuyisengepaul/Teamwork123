@@ -108,7 +108,7 @@ describe('GET <api/v1/auth/>  Get all Users', () => {
       .get('api/v1/auth/')
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(403);
         res.body.should.have.be.a('object');
       });
   });

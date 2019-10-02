@@ -29,7 +29,7 @@ aboutUs.setAttribute('class', 'hide');
 contactUs.setAttribute('class', 'hide');
 flaggedArticle.setAttribute('class', 'hide');
 
-function flagged() {
+const flagged=()=> {
   flaggedArticle.setAttribute('class', 'flagged-article-division');
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -115,7 +115,7 @@ editMyArticleBtn.addEventListener('Click', () => {
   flaggedArticle.setAttribute('class', 'hide');
 });
 
-function aboutus() {
+const aboutus = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -126,7 +126,7 @@ function aboutus() {
   editMyArticle.setAttribute('class', 'hide');
   flaggedArticle.setAttribute('class', 'hide');
 }
-function contactus() {
+const contactus = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -137,7 +137,7 @@ function contactus() {
   editMyArticle.setAttribute('class', 'hide');
   flaggedArticle.setAttribute('class', 'hide');
 }
-function read() {
+const read = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'read-article');
@@ -148,7 +148,7 @@ function read() {
   editMyArticle.setAttribute('class', 'hide');
   flaggedArticle.setAttribute('class', 'hide');
 }
-function edit() {
+const edit = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -173,32 +173,32 @@ let closeComment = document.getElementsByClassName('close')[5];
 let closeQuery = document.getElementsByClassName('close')[6];
 // let closeNewArticle = document.getElementsByClassName("close")[0];
 
-closeNewArticle.onclick = function () {
+closeNewArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-new-article');
   successBox.style.display = 'none';
   // successBox.setAttribute('class','easyout');
 };
-closeUpdateArticle.onclick = function () {
+closeUpdateArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-update-article');
   successBox.style.display = 'none';
 };
-closeDeleteArticle.onclick = function () {
+closeDeleteArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-delete-article');
   successBox.style.display = 'none';
 };
-closeFlagArticle.onclick = function () {
+closeFlagArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-flag-article');
   successBox.style.display = 'none';
 };
-closeFlagComment.onclick = function () {
+closeFlagComment.onclick = () => {
   let successBox = document.querySelector('.success-msg-flag-comment');
   successBox.style.display = 'none';
 };
-closeComment.onclick = function () {
+closeComment.onclick = () => {
   let successBox = document.querySelector('.success-msg-comment');
   successBox.style.display = 'none';
 };
-closeQuery.onclick = function () {
+closeQuery.onclick  = () => {
   let successBox = document.querySelector('.success-msg-query');
   successBox.style.display = 'none';
 };
@@ -206,29 +206,29 @@ closeQuery.onclick = function () {
 
 
 let publishArticleBtn = document.querySelector('.publish');
-publishArticleBtn.onclick = function () {
+publishArticleBtn.onclick = () => {
   document.querySelector('.success-msg-new-article').style.display = 'block';
 };
 
-function update() {
+const update = () => {
   document.querySelector('.success-msg-update-article').style.display = 'block';
 }
 
-function deleteArticle() {
+const deleteArticle = () => {
   document.querySelector('.success-msg-delete-article').style.display = 'block';
 }
 
 
-function flagComment() {
+const flagComment = () => {
   document.querySelector('.success-msg-flag-comment').style.display = 'block';
 }
 function flagArticle() {
   document.querySelector('.success-msg-flag-article').style.display = 'block';
 }
-function comment() {
+const comment = () => {
   document.querySelector('.success-msg-comment').style.display = 'block';
 }
-function submitquery() {
+const submitquery = () => {
   document.querySelector('.success-msg-query').style.display = 'block';
 }
 // / Additional Codes Related to Responsiveness
@@ -237,13 +237,13 @@ let menuIcon = document.getElementsByClassName('menu-icon')[0];
 let closeMenuIcon = document.getElementsByClassName('close-menu-icon')[0];
 let leftNavMenu = document.getElementsByClassName('left-division')[0];
 
-menuIcon.onclick = function () {
+menuIcon.onclick = () => {
   leftNavMenu.style.display = 'block';
   leftNavMenu.style.width = '50%';
   closeMenuIcon.style.display = 'block';
   menuIcon.style.display = 'none';
 };
-closeMenuIcon.onclick = function () {
+closeMenuIcon.onclick = () =>  {
   leftNavMenu.style.display = 'none';
   leftNavMenu.style.width = '0';
   closeMenuIcon.style.display = 'none';
@@ -260,7 +260,7 @@ newMenu.onclick = function () {
   closeMenu.style.display = 'block';
   newMenu.style.display = 'none';
 };
-closeMenu.onclick = function () {
+closeMenu.onclick = () => {
   leftNavMenu.style.display = 'none';
   leftNavMenu.style.width = '0';
   closeMenu.style.display = 'none';

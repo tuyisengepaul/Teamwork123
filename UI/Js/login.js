@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 let signInDivision = document.querySelector('.login-details');
 let signUpBtn = document.querySelector('.sign-up-btn');
 let signUpDivision = document.querySelector('.sign-up-details');
