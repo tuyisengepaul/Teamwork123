@@ -1,4 +1,4 @@
-# Teamwork123
+# Teamwork
 [![Coverage Status](https://coveralls.io/repos/github/tuyisengepaul/Teamwork/badge.svg?branch=develop)](https://coveralls.io/github/tuyisengepaul/Teamwork?branch=develop)
 
 [![Build Status](https://travis-ci.org/tuyisengepaul/Teamwork.svg?branch=develop)](https://travis-ci.org/tuyisengepaul/Teamwork)
