@@ -1,3 +1,4 @@
+![images](https://user-images.githubusercontent.com/52475100/66032932-98585100-e506-11e9-8679-ffed5c9b6ba5.png)
 # Teamwork
 [![Coverage Status](https://coveralls.io/repos/github/tuyisengepaul/Teamwork/badge.svg?branch=develop)](https://coveralls.io/github/tuyisengepaul/Teamwork?branch=develop)
 
