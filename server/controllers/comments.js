@@ -4,7 +4,7 @@ import commentes from '../models/comments';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
 import { commente } from '../helpers/validation';
-import customize from '../helpers/customize';
+import customize from '../helpers/Customize';
 
 class comment {
   static createComment(req, res) {

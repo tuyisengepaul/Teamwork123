@@ -1,7 +1,7 @@
 import incodePass from 'bcrypt';
 import Joi from '@hapi/joi';
 import { userSignup, userSignin } from '../helpers/validation';
-import customize from '../helpers/customize';
+import customize from '../helpers/Customize';
 import users from '../models/users';
 import IdProider from '../helpers/idprovider';
 import Token from '../helpers/token';

@@ -1,24 +1,24 @@
 // ######################Main Divisions
 
-let allArticle = document.querySelector(".all-articles");
-let newArticle = document.querySelector(".new-article");
-let readArticle = document.querySelector(".read-article");
-let myArticle = document.querySelector(".my-article-content");
-let sharedArticle = document.querySelector(".shared-article");
-let aboutUs = document.querySelector(".about-us-cnts");
-let contactUs = document.querySelector(".contact-us-cnts");
-let editMyArticle = document.querySelector(".edit-my-article");
-let flaggedArticle = document.querySelector(".flagged-article-division");
+let allArticle = document.querySelector('.all-articles');
+let newArticle = document.querySelector('.new-article');
+let readArticle = document.querySelector('.read-article');
+let myArticle = document.querySelector('.my-article-content');
+let sharedArticle = document.querySelector('.shared-article');
+let aboutUs = document.querySelector('.about-us-cnts');
+let contactUs = document.querySelector('.contact-us-cnts');
+let editMyArticle = document.querySelector('.edit-my-article');
+let flaggedArticle = document.querySelector('.flagged-article-division');
 
 // ##################main Buttons and important links
 
-let allArticleBtn = document.querySelector(".all-article-btn");
-let newArticleBtn = document.querySelector(".new-article-btn");
-let readArticleBtn = document.querySelector(".btn-article-ctn");
-let myArticleBtn = document.querySelector(".my-article-btn");
-let sharedArticleBtn = document.querySelector(".shared-article-btn");
-let editMyArticleBtn = document.querySelector(".btn-article-ctn-edit");
-let flaggedArticleBtn = document.querySelector(".flagged-article-btn");
+let allArticleBtn = document.querySelector('.all-article-btn');
+let newArticleBtn = document.querySelector('.new-article-btn');
+let readArticleBtn = document.querySelector('.btn-article-ctn');
+let myArticleBtn = document.querySelector('.my-article-btn');
+let sharedArticleBtn = document.querySelector('.shared-article-btn');
+let editMyArticleBtn = document.querySelector('.btn-article-ctn-edit');
+let flaggedArticleBtn = document.querySelector('.flagged-article-btn');
 
 newArticle.setAttribute('class', 'hide');
 readArticle.setAttribute('class', 'hide');
@@ -43,7 +43,6 @@ function flagged() {
 
 
 allArticleBtn.addEventListener('click', () => {
-
   allArticle.setAttribute('class', 'all-articles');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -68,7 +67,6 @@ newArticleBtn.addEventListener('click', () => {
 });
 // Click Sign In Button to LogIn.
 readArticleBtn.addEventListener('click', () => {
-
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'read-article');
@@ -81,7 +79,6 @@ readArticleBtn.addEventListener('click', () => {
 });
 
 myArticleBtn.addEventListener('click', () => {
-
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -94,7 +91,6 @@ myArticleBtn.addEventListener('click', () => {
 });
 
 sharedArticleBtn.addEventListener('click', () => {
-
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -108,7 +104,6 @@ sharedArticleBtn.addEventListener('click', () => {
 
 
 editMyArticleBtn.addEventListener('Click', () => {
-
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -169,13 +164,13 @@ function edit() {
 // #####################  Info, Error and Success Messages ########################
 // ################################################################################
 
-let closeNewArticle = document.getElementsByClassName("close")[0];
-let closeUpdateArticle = document.getElementsByClassName("close")[1];
-let closeDeleteArticle = document.getElementsByClassName("close")[2];
-let closeFlagArticle = document.getElementsByClassName("close")[3];
-let closeFlagComment = document.getElementsByClassName("close")[4];
-let closeComment = document.getElementsByClassName("close")[5];
-let closeQuery = document.getElementsByClassName("close")[6];
+let closeNewArticle = document.getElementsByClassName('close')[0];
+let closeUpdateArticle = document.getElementsByClassName('close')[1];
+let closeDeleteArticle = document.getElementsByClassName('close')[2];
+let closeFlagArticle = document.getElementsByClassName('close')[3];
+let closeFlagComment = document.getElementsByClassName('close')[4];
+let closeComment = document.getElementsByClassName('close')[5];
+let closeQuery = document.getElementsByClassName('close')[6];
 // let closeNewArticle = document.getElementsByClassName("close")[0];
 
 closeNewArticle.onclick = function () {
@@ -210,17 +205,17 @@ closeQuery.onclick = function () {
 
 
 
-let publishArticleBtn = document.querySelector(".publish");
+let publishArticleBtn = document.querySelector('.publish');
 publishArticleBtn.onclick = function () {
-  document.querySelector(".success-msg-new-article").style.display = 'block';
+  document.querySelector('.success-msg-new-article').style.display = 'block';
 };
 
 function update() {
-  document.querySelector(".success-msg-update-article").style.display = 'block';
+  document.querySelector('.success-msg-update-article').style.display = 'block';
 }
 
 function deleteArticle() {
-  document.querySelector('.success-msg-delete-article').style.display = "block";
+  document.querySelector('.success-msg-delete-article').style.display = 'block';
 }
 
 
@@ -252,7 +247,7 @@ closeMenuIcon.onclick = function () {
   leftNavMenu.style.display = 'none';
   leftNavMenu.style.width = '0';
   closeMenuIcon.style.display = 'none';
-  menuIcon.style.display = "block";
+  menuIcon.style.display = 'block';
 };
 // / Additional Codes Related to Responsiveness
 // / Mobile Layout
