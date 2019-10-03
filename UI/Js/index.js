@@ -1,4 +1,4 @@
-let ContinueBtn=document.querySelector(".continue-btn");
-ContinueBtn.addEventListener('click', function(){
-window.location = 'Html/signin.html';
+let ContinueBtn = document.querySelector('.continue-btn');
+ContinueBtn.addEventListener('click', () => {
+  window.location = 'Html/signin.html';
 });

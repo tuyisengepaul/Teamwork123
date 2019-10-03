@@ -1,9 +1,9 @@
 body{
     border: 0;
     background-color: white;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'arial', 'Nanum Gothic', sans-serif;
     line-height: 1.5em;
-    color: darkgray;
+    color: darkslategray;
 }
 .hide {
     display: none;
@@ -67,19 +67,25 @@ cursor: pointer;
 {
 	margin-left: 20px; 
 }
-.sign-up-btn, .sign-in-btn
+ .sign-up-btn
 {
-	width: 80px;
-	height: 30px;
-	border-radius: 20px;
-	border: none;
-	background-color: lightgreen;
-	color: white;
+	text-decoration: none;
+	color: rgb(51,153,255, 0.7);
 }
-.sign-up-btn:hover, .sign-in-btn:hover
+.sign-up-btn:hover
 {
-	background-color: green;
-        cursor: pointer;
+color: #000000;
+}
+
+.sign-in-btn
+{
+	text-decoration: none;
+	color: rgb(51,153,255, 0.7);
+}
+
+.sign-in-btn:hover
+{
+	color: #000000;
 }
 
 /*Sign Up */
