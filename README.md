@@ -1,26 +1,26 @@
 ![images](https://user-images.githubusercontent.com/52475100/66032932-98585100-e506-11e9-8679-ffed5c9b6ba5.png)
 # Teamwork
 [![Coverage Status](https://coveralls.io/repos/github/tuyisengepaul/Teamwork/badge.svg?branch=develop)](https://coveralls.io/github/tuyisengepaul/Teamwork?branch=develop)
-
 [![Build Status](https://travis-ci.org/tuyisengepaul/Teamwork.svg?branch=develop)](https://travis-ci.org/tuyisengepaul/Teamwork)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a028081d6a49b71bf625/maintainability)](https://codeclimate.com/github/tuyisengepaul/Teamwork/maintainability)
 
 Teamwork is an ​internal social network for organizations’ employees. The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.
 
 ## Table of contents
 
-[Project Links](#links) 
+1. [Project Links](#links) 
 
-[Technologies](#technologies)
+2. [Technologies](#technologies)
 
-[Tools](#tools)
-  [Front end tools](#Frontend Tools)
-  [Back end tools](#Backend Tools)
+3. [Tools](#tools)
+  3.1. [Front_end_tools](#Frontend_Tools)
+  3.2. [Back_end_tools](#Backend_Tools)
 
-[Getting started](#Getting started)
-  [Prerequisite]
-  [Step](#Steps)
-  [Endpoints](#Endpoints)
-  [Tests](#Running Unit Test)
+4. [Getting started](#Getting_started)
+  4.1. [Prerequisite]
+  4.2. [Step](#Steps)
+  4.3. [Endpoints](#Endpoints)
+  4.4. [Tests](#Running_Unit_Test)
 
 [Acknowledgment](#acknowledgments)
 
@@ -32,7 +32,7 @@ UI for the Teamwork project being hosted to gh-pages can be found here [Teamwork
 
 Pivotal Tracker Stories can found here [Pivotal tracker](https://www.pivotaltracker.com/n/projects/2397926).
 
-Application was deployed to Heroku. Use public URL []().
+Application was deployed to Heroku. Use public URL [Teamwork](https://teamworkproject.herokuapp.com/).
 
 ## Technologies
 
@@ -44,13 +44,13 @@ Application was deployed to Heroku. Use public URL []().
 
 ## Tools
 
-### Frontend Tools
+### Frontend_Tools
 
 - ```HTML``` - Hypertext Markup Language is the standard markup language for documents designed to be displayed in a web browser.
 - ```CSS``` - Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML.
 - ```Javascript``` - A Jvascript is an object-oriented computer programming language commonly used to create interactive effects within web browsers.
 
-### Backend Tools
+### Backend_Tools
 
 - [Postman](https://www.getpostman.com/) Postman is a collaboration platform for API development. 
 - Testing
@@ -61,7 +61,7 @@ Application was deployed to Heroku. Use public URL []().
 - [Travis CI](https://travis-ci.org/) is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
 - [Coveralls](https://codeclimate.com/) Coveralls is a web service to help you track your code coverage over time, and ensure that all your new code is fully covered.
 
-## Getting started
+## Getting_started
 
 #### Prerequisitess
 
@@ -96,7 +96,7 @@ Application was deployed to Heroku. Use public URL []().
 | DELETE | Delete a comment                        | `/api/v1/commentes/:id`   | 
 
 
-#### Running Unit Test
+#### Running_Unit_Test
 - Run test for all endpoints
   > npm test
 
@@ -106,7 +106,7 @@ Application was deployed to Heroku. Use public URL []().
 
 ## Author
 
-- [Tuyisenge Jean Paul](tuyisengepaul200@gmail.com)
+- [Tuyisenge Jean Paul](https://www.linkedin.com/in/tuyisenge-jean-paul)
 
 
 

@@ -1,19 +1,21 @@
-import Joi from '@hapi/joi';
-import { article } from '../helpers/validation';
-import customize from '../helpers/Customize';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
 
+
+/**
+ * @description classs this class contains methods for manipulating articles,
+ * (Create new article, edit an article and delete);
+ */
 class allAboutArticle {
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
+   */
   static newArticle(req, res) {
     let message = '';
-    const { error } = Joi.validate(req.body, article);
-    if (error) {
-      return customize.validateError(req, res, error, 400);
-    }
-
     articles.map((article) => {
-      if (article.title === req.body.title || article.article === req.body.article) {
+      if (article.article === req.body.article) {
         message = 'This article alread exist';
       }
     });
@@ -40,6 +42,12 @@ class allAboutArticle {
     });
   }
 
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
+   * @description this method allows a user to edit his own article
+   */
   static editArticle(req, res) {
     const { flag } = req.params;
     const articleid = parseInt(req.params.id, 10);
@@ -67,6 +75,12 @@ class allAboutArticle {
     });
   }
 
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
+   * @description This method in the action of deleting an article
+   */
   static deleteArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
     let message = '';
@@ -88,6 +102,12 @@ class allAboutArticle {
     });
   }
 
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
+   * @description This method is used to get all articles
+   */
   static getAllarticle(req, res) {
     const data = articles.sort((a, b) => {
       const dateA = new Date(a.createdOn);
@@ -101,6 +121,12 @@ class allAboutArticle {
     });
   }
 
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
+   * @description This method is used to get a specific article
+   */
   static getSpecificArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
     let data = '';

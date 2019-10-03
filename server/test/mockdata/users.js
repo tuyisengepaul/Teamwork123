@@ -9,7 +9,7 @@ const user = [
     jobRole: 'manager',
     department: 'it',
     address: 'gikondo',
-    type: 'staff',
+    type: 'admin',
   },
   {
     id: 2,

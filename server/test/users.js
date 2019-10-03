@@ -78,10 +78,10 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
       });
   });
 
-  it('check if url is valid', () => {
+  it('check if credentialss are corrrect', () => {
     chai
       .request(app)
-      .post('api/v1/aut')
+      .post('api/v1/auth/signin')
       .send(user[3])
       .end((err, res) => {
         res.should.have.status(404);
@@ -108,7 +108,7 @@ describe('GET <api/v1/auth/>  Get all Users', () => {
       .get('api/v1/auth/')
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(403);
         res.body.should.have.be.a('object');
       });
   });

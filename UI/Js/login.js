@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 let signInDivision = document.querySelector('.login-details');
 let signUpBtn = document.querySelector('.sign-up-btn');
 let signUpDivision = document.querySelector('.sign-up-details');
@@ -19,7 +18,7 @@ signUpBtn.addEventListener('click', () => {
 LogInBtn.addEventListener('click', () => {
   let userEmail = document.getElementsByClassName('username')[0].value;
   let userPassword = document.getElementsByClassName('userpassword')[0].value;
-  if (userEmail == 'Admin@teamwork.com' && userPassword === 'Admin') {
+  if (userEmail === 'Admin@teamwork.com' && userPassword === 'Admin') {
     window.location = 'admin.html';
   } else {
     window.location = 'employee.html';

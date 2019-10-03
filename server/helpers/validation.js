@@ -37,5 +37,5 @@ const parameterFlag = Joi.object().keys({
 });
 
 export {
-  userSignup, userSignin, article, commente,parameter, parameterFlag
+  userSignup, userSignin, article, commente, parameter, parameterFlag,
 };
