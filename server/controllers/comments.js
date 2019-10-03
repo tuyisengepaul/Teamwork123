@@ -1,4 +1,4 @@
-import commentes from '../models/comments';
+import comments from '../models/comments';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
 
@@ -22,7 +22,7 @@ class comment {
         existArticle = article;
       }
     });
-    commentes.map((newcomment) => {
+    comments.map((newcomment) => {
       if (req.body.comment === newcomment.comment && articleid === newcomment.articleId) {
         message = 'Alread exist';
       }
@@ -36,13 +36,13 @@ class comment {
     if (existArticle) {
       let todayDate = new Date();
       const data = {
-        id: IdProider(commentes),
+        id: IdProider(comments),
         articleId: existArticle.id,
         comment: req.body.comment,
         createdOn: todayDate,
         status: 'unflagging',
       };
-      commentes.push(data);
+      comments.push(data);
       return res.status(201).json({
         status: '201',
         message: 'comment added',
@@ -71,7 +71,7 @@ class comment {
   static flagComment(req, res) {
     const id = parseInt(req.params.id, 10);
     let message = '';
-    commentes.map((comment) => {
+    comments.map((comment) => {
       if (comment.id === id) {
         comment.flag += 1;
         message = comment;
@@ -98,9 +98,9 @@ class comment {
   static deleteComment(req, res) {
     const commentid = parseInt(req.params.id, 10);
     let message = '';
-    commentes.map((comment, index) => {
+    comments.map((comment, index) => {
       if (comment.id === commentid && comment.flag > 0) {
-        commentes.splice(index, 1);
+        comments.splice(index, 1);
         message = 'comment deleted successfuly';
       }
     });

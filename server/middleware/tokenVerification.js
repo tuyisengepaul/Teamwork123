@@ -19,7 +19,7 @@ const isLoggedin = (req, res, next) => {
   }
 
   try {
-    const decodedToken = jwt.verify(token, process.env.tokenKeys);
+    const decodedToken = jwt.verify(token, process.env.TOKEN_KEYS);
     let userData = '';
     users.map((user) => {
       if (user.email === decodedToken.payLoad) {

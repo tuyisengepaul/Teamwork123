@@ -91,7 +91,7 @@ editMyArticleBtn.addEventListener('click', () => {
   editMyArticle.setAttribute('class', 'edit-my-article');
 });
 
-const aboutus = ()=> {
+const aboutus = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'hide');
@@ -100,7 +100,7 @@ const aboutus = ()=> {
   aboutUs.setAttribute('class', 'about-us-cnts');
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'hide');
-}
+};
 const contactus = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -110,8 +110,8 @@ const contactus = () => {
   aboutUs.setAttribute('class', 'hide');
   contactUs.setAttribute('class', 'contact-us-cnts');
   editMyArticle.setAttribute('class', 'hide');
-}
-const read =() => {
+};
+const read = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
   readArticle.setAttribute('class', 'read-article');
@@ -120,7 +120,7 @@ const read =() => {
   aboutUs.setAttribute('class', 'hide');
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'hide');
-}
+};
 const edit = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -130,7 +130,7 @@ const edit = () => {
   aboutUs.setAttribute('class', 'hide');
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'edit-my-article');
-}
+};
 
 // ################################################################################
 // #####################  Info, Error and Success Messages ########################
@@ -143,18 +143,16 @@ let closeFlagArticle = document.getElementsByClassName('close')[3];
 let closeFlagComment = document.getElementsByClassName('close')[4];
 let closeComment = document.getElementsByClassName('close')[5];
 let closeQuery = document.getElementsByClassName('close')[6];
-// let closeNewArticle = document.getElementsByClassName("close")[0];
 
 closeNewArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-new-article');
   successBox.style.display = 'none';
-  // successBox.setAttribute('class','easyout');
 };
 closeUpdateArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-update-article');
   successBox.style.display = 'none';
 };
-closeDeleteArticle.onclick = () =>  {
+closeDeleteArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-delete-article');
   successBox.style.display = 'none';
 };
@@ -162,7 +160,7 @@ closeFlagArticle.onclick = () => {
   let successBox = document.querySelector('.success-msg-flag-article');
   successBox.style.display = 'none';
 };
-closeFlagComment.onclick = () =>  {
+closeFlagComment.onclick = () => {
   let successBox = document.querySelector('.success-msg-flag-comment');
   successBox.style.display = 'none';
 };
@@ -178,31 +176,31 @@ closeQuery.onclick = () => {
 
 
 let publishArticleBtn = document.querySelector('.publish');
-publishArticleBtn.onclick = () =>  {
+publishArticleBtn.onclick = () => {
   document.querySelector('.success-msg-new-article').style.display = 'block';
 };
 
-const update = () =>{
+const update = () => {
   document.querySelector('.success-msg-update-article').style.display = 'block';
-}
+};
 
 const deleteArticle = () => {
   document.querySelector('.success-msg-delete-article').style.display = 'block';
-}
+};
 
 
 const flagComment = () => {
   document.querySelector('.success-msg-flag-comment').style.display = 'block';
-}
+};
 const flagArticle = () => {
   document.querySelector('.success-msg-flag-article').style.display = 'block';
-}
+};
 const comment = () => {
   document.querySelector('.success-msg-comment').style.display = 'block';
-}
+};
 const submitquery = () => {
   document.querySelector('.success-msg-query').style.display = 'block';
-}
+};
 
 // / Additional Codes Related to Responsiveness
 

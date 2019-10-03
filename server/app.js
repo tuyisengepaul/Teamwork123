@@ -19,12 +19,12 @@ app.get('/', (_req, res) => {
 });
 
 app.use((_req, _res, next) => {
-  const error = new Error('Bad url ');
+  const error = new Error('Bad url');
   error.status = 404;
   next(error);
 });
 
-app.use((error, _req, res) => {
+app.use((error, req, res, next) => {
   res.status(error.status);
   res.json({
     status: '404',

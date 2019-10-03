@@ -29,7 +29,7 @@ aboutUs.setAttribute('class', 'hide');
 contactUs.setAttribute('class', 'hide');
 flaggedArticle.setAttribute('class', 'hide');
 
-const flagged=()=> {
+const flagged = () => {
   flaggedArticle.setAttribute('class', 'flagged-article-division');
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -39,7 +39,7 @@ const flagged=()=> {
   aboutUs.setAttribute('class', 'hide');
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'hide');
-}
+};
 
 
 allArticleBtn.addEventListener('click', () => {
@@ -125,7 +125,7 @@ const aboutus = () => {
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'hide');
   flaggedArticle.setAttribute('class', 'hide');
-}
+};
 const contactus = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -136,7 +136,7 @@ const contactus = () => {
   contactUs.setAttribute('class', 'contact-us-cnts');
   editMyArticle.setAttribute('class', 'hide');
   flaggedArticle.setAttribute('class', 'hide');
-}
+};
 const read = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -147,7 +147,7 @@ const read = () => {
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'hide');
   flaggedArticle.setAttribute('class', 'hide');
-}
+};
 const edit = () => {
   allArticle.setAttribute('class', 'hide');
   newArticle.setAttribute('class', 'hide');
@@ -158,7 +158,7 @@ const edit = () => {
   contactUs.setAttribute('class', 'hide');
   editMyArticle.setAttribute('class', 'edit-my-article');
   flaggedArticle.setAttribute('class', 'hide');
-}
+};
 // ##################################################################
 // ################################################################################
 // #####################  Info, Error and Success Messages ########################
@@ -198,11 +198,10 @@ closeComment.onclick = () => {
   let successBox = document.querySelector('.success-msg-comment');
   successBox.style.display = 'none';
 };
-closeQuery.onclick  = () => {
+closeQuery.onclick = () => {
   let successBox = document.querySelector('.success-msg-query');
   successBox.style.display = 'none';
 };
-
 
 
 let publishArticleBtn = document.querySelector('.publish');
@@ -212,25 +211,25 @@ publishArticleBtn.onclick = () => {
 
 const update = () => {
   document.querySelector('.success-msg-update-article').style.display = 'block';
-}
+};
 
 const deleteArticle = () => {
   document.querySelector('.success-msg-delete-article').style.display = 'block';
-}
+};
 
 
 const flagComment = () => {
   document.querySelector('.success-msg-flag-comment').style.display = 'block';
-}
+};
 function flagArticle() {
   document.querySelector('.success-msg-flag-article').style.display = 'block';
 }
 const comment = () => {
   document.querySelector('.success-msg-comment').style.display = 'block';
-}
+};
 const submitquery = () => {
   document.querySelector('.success-msg-query').style.display = 'block';
-}
+};
 // / Additional Codes Related to Responsiveness
 
 let menuIcon = document.getElementsByClassName('menu-icon')[0];
@@ -243,7 +242,7 @@ menuIcon.onclick = () => {
   closeMenuIcon.style.display = 'block';
   menuIcon.style.display = 'none';
 };
-closeMenuIcon.onclick = () =>  {
+closeMenuIcon.onclick = () => {
   leftNavMenu.style.display = 'none';
   leftNavMenu.style.width = '0';
   closeMenuIcon.style.display = 'none';
@@ -266,4 +265,3 @@ closeMenu.onclick = () => {
   closeMenu.style.display = 'none';
   newMenu.style.display = 'block';
 };
-

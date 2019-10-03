@@ -1,4 +1,6 @@
-import { article, commente,userSignup, userSignin } from '../helpers/validation';
+import {
+  article, commente, userSignup, userSignin,
+} from '../helpers/validation';
 import valid from '../helpers/validateFc';
 
 /**
@@ -12,25 +14,21 @@ class Validate {
      * @param {object} res
      * @param {} next
      */
-  
+
   static newArticle(req, res, next) {
-    valid(req, res, next,   article);
+    valid(req, res, next, article);
   }
 
   static addComment(req, res, next) {
     valid(req, res, next, commente);
   }
- 
-  static userRegister(req, res, next)
-  {
+
+  static userRegister(req, res, next) {
     valid(req, res, next, userSignup);
   }
 
-  static UserSignin(req, res, next)
-  {
-    valid(req, res, next,userSignin);
+  static UserSignin(req, res, next) {
+    valid(req, res, next, userSignin);
   }
-
-
 }
 export default Validate;

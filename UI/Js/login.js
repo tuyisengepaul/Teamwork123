@@ -18,7 +18,7 @@ signUpBtn.addEventListener('click', () => {
 LogInBtn.addEventListener('click', () => {
   let userEmail = document.getElementsByClassName('username')[0].value;
   let userPassword = document.getElementsByClassName('userpassword')[0].value;
-  if (userEmail == 'Admin@teamwork.com' && userPassword === 'Admin') {
+  if (userEmail === 'Admin@teamwork.com' && userPassword === 'Admin') {
     window.location = 'admin.html';
   } else {
     window.location = 'employee.html';
