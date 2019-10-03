@@ -3,7 +3,17 @@ import users from '../models/users';
 import IdProider from '../helpers/idprovider';
 import Token from '../helpers/token';
 
+/**
+ * @author Jean Paul Tuyisenge
+ * @description This class contains methods for registering user, sign in and fetch user /
+ */
 class User {
+  /**
+   *@author Jean Paul Tuyisenge
+   * @param {object} req
+   * @param {object} res
+   * @description This method allows the user to register himself /
+   */
   static register(req, res) {
     const Userone = req.body;
     let message = '';
@@ -39,6 +49,12 @@ class User {
     });
   }
 
+  /**
+ * @author Tuyisenge Jean Paul
+ * @param {object} req
+ * @param {object} res
+ * @description This method help the user to be signed in/
+ */
   static signin(req, res) {
     let data = '';
     const { email } = req.body;
@@ -76,6 +92,12 @@ class User {
     });
   }
 
+  /**
+ * @author Jean Paul Tuyisenge
+ * @param {object} req
+ * @param {object} res
+ * @description Thi method help the admin to get all the users/
+ */
   static AllUsers(req, res) {
     return res.status(200).json({
       status: '200',

@@ -9,7 +9,7 @@ const user = [
     jobRole: 'manager',
     department: 'it',
     address: 'gikondo',
-    type: 'staff',
+    type: 'admin',
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const user = [
     type: 'staff',
   },
   {
-    email: 'admin​@gmail.com',
+    email: 'admin12​@gmail.com',
     password: '$2b$10$lxbrnTmsgf8MyTfzABSSfek/pRbY2TEWJ5Uw4n.nmxyF536ysVZ1.',
 
   },

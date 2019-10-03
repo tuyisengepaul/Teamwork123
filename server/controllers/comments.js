@@ -2,8 +2,17 @@ import commentes from '../models/comments';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
 
-
+/**
+ * @author Tuyisenge Jean Paul
+ * @description the class comment contains method for creating a comment, flag and delete a comment/
+ */
 class comment {
+  /**
+   *@author Jean Paul Tuyisenge
+   * @param {object} req
+   * @param {object} res
+   * @description Thi is the method for creating a comment /
+   */
   static createComment(req, res) {
     const articleid = parseInt(req.params.id, 10);
     let existArticle = '';
@@ -53,6 +62,12 @@ class comment {
     });
   }
 
+  /**
+ * @author Tuyisenge Jean Paul
+ * @param {object} req
+ * @param {object} res
+ * @description This methods alow the user to flag a comment/
+ */
   static flagComment(req, res) {
     const id = parseInt(req.params.id, 10);
     let message = '';
@@ -74,6 +89,12 @@ class comment {
     });
   }
 
+  /**
+   *@author Jean Paul Tuyisenge
+   * @param {object} req
+   * @param {object} res
+   * @description This method allows admin to delete a flaged comment
+   */
   static deleteComment(req, res) {
     const commentid = parseInt(req.params.id, 10);
     let message = '';

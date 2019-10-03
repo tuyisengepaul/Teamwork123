@@ -46,6 +46,7 @@ class allAboutArticle {
    * @author Tuyisenge J.Paul
    * @param {object} req
    * @param {object} res
+   * @description this method allows a user to edit his own article
    */
   static editArticle(req, res) {
     const { flag } = req.params;
@@ -78,6 +79,7 @@ class allAboutArticle {
    * @author Tuyisenge J.Paul
    * @param {object} req
    * @param {object} res
+   * @description This method in the action of deleting an article
    */
   static deleteArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
@@ -104,6 +106,7 @@ class allAboutArticle {
    * @author Tuyisenge J.Paul
    * @param {object} req
    * @param {object} res
+   * @description This method is used to get all articles
    */
   static getAllarticle(req, res) {
     const data = articles.sort((a, b) => {
@@ -122,6 +125,7 @@ class allAboutArticle {
    * @author Tuyisenge J.Paul
    * @param {object} req
    * @param {object} res
+   * @description This method is used to get a specific article
    */
   static getSpecificArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
