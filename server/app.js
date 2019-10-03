@@ -9,17 +9,22 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 app.use('/api/v1', usersRouter);
 app.use('/api/v1', articleRouter);
 app.use('/api/v1', comment);
-app.use((req, _res, next) => {
+app.get('/', (_req, res) => {
+  let message = ' Welcome to Team work. ';
+  message += 'The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.';
+  res.send(message);
+});
+
+app.use((_req, _res, next) => {
   const error = new Error('Bad url ');
   error.status = 404;
   next(error);
 });
 
-app.use((error, req, res, next) => {
+app.use((error, _req, res) => {
   res.status(error.status);
   res.json({
     status: '404',

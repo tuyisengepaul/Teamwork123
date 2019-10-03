@@ -32,7 +32,7 @@ UI for the Teamwork project being hosted to gh-pages can be found here [Teamwork
 
 Pivotal Tracker Stories can found here [Pivotal tracker](https://www.pivotaltracker.com/n/projects/2397926).
 
-Application was deployed to Heroku. Use public URL []().
+Application was deployed to Heroku. Use public URL [Teamwork](https://teamworkproject.herokuapp.com/).
 
 ## Technologies
 
