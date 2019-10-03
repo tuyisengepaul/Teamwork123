@@ -48,6 +48,19 @@ describe('post </api/v1/comments>  create comment api', () => {
         done();
       });
   });
+
+  it('should check if comment exist', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/comments/1')
+      .send(comments[0])
+      .set('Authorization', `Bearer ${staffToken}`)
+      .end((err, res) => {
+        res.should.have.status(409);
+        res.body.should.have.be.a('object');
+        done();
+      });
+  });
 });
 
 describe('patch </api/v1/comments>  flag comment api', () => {

@@ -4,7 +4,7 @@ const users = [
     firstName: 'bugingo​',
     lastName: 'aime',
     email: 'admin@gmail.com',
-    password: '$2b$10$lxbrnTmsgf8MyTfzABSSfek/pRbY2TEWJ5Uw4n.nmxyF536ysVZ1.',
+    password: '$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK',
     gender: 'male',
     jobRole: 'manager',
     department: 'it',

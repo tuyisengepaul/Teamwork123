@@ -9,11 +9,24 @@ chai.should();
 const adminToken = Token('admin@gmail.com');
 const staffToken = Token('bugingo​@gmail.com');
 
-describe('POST <api/v1/auth/signup>  sign up', () => {
+describe('POST </>  Welcome message', () => {
+  it('User should get welcome message', () => {
+    chai
+      .request(app)
+      .get('/')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.be.a('object');
+      });
+  });
+});
+
+
+describe('POST </api/v1/auth/signup>  sign up', () => {
   it('User should sign up', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signup')
+      .post('/api/v1/auth/signup')
       .send(user[0])
       .end((err, res) => {
         res.should.have.status(201);
@@ -24,7 +37,7 @@ describe('POST <api/v1/auth/signup>  sign up', () => {
   it('sign up validation', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signup')
+      .post('/api/v1/auth/signup')
       .send()
       .end((err, res) => {
         res.should.have.status(400);
@@ -35,8 +48,8 @@ describe('POST <api/v1/auth/signup>  sign up', () => {
   it('check if user exist', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signup')
-      .send(user[1])
+      .post('/api/v1/auth/signup')
+      .send(user[0])
       .end((err, res) => {
         res.should.have.status(409);
         res.body.should.have.be.a('object');
@@ -48,7 +61,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
   it('User should sign in', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signin')
+      .post('/api/v1/auth/signin')
       .send(user[2])
       .end((err, res) => {
         res.should.have.status(200);
@@ -59,7 +72,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
   it('sign in validation', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signin')
+      .post('/api/v1/auth/signin')
       .send()
       .end((err, res) => {
         res.should.have.status(400);
@@ -70,7 +83,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
   it('check if username and password are valid', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signup')
+      .post('/api/v1/auth/signup')
       .send(user[3])
       .end((err, res) => {
         res.should.have.status(400);
@@ -81,7 +94,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
   it('check if credentialss are corrrect', () => {
     chai
       .request(app)
-      .post('api/v1/auth/signin')
+      .post('/api/v1/auth/signin')
       .send(user[3])
       .end((err, res) => {
         res.should.have.status(404);
@@ -90,11 +103,11 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
   });
 });
 
-describe('GET <api/v1/auth/>  Get all Users', () => {
+describe('GET </api/v1/auth/>  Get all Users', () => {
   it('Admin should get all users', () => {
     chai
       .request(app)
-      .get('api/v1/auth/')
+      .get('/api/v1/auth/')
       .set('Authorization', `Bearer ${adminToken}`)
       .end((err, res) => {
         res.should.have.status(200);
@@ -105,7 +118,7 @@ describe('GET <api/v1/auth/>  Get all Users', () => {
   it('Checker if staff is allowed to get all users', () => {
     chai
       .request(app)
-      .get('api/v1/auth/')
+      .get('/api/v1/auth/')
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(403);
