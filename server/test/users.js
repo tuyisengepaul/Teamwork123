@@ -78,10 +78,10 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
       });
   });
 
-  it('check if url is valid', () => {
+  it('check if credentialss are corrrect', () => {
     chai
       .request(app)
-      .post('api/v1/aut')
+      .post('api/v1/auth/signin')
       .send(user[3])
       .end((err, res) => {
         res.should.have.status(404);

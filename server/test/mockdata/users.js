@@ -24,7 +24,7 @@ const user = [
     type: 'staff',
   },
   {
-    email: 'admin12​@gmail.com',
+    email: 'admin​@gmail.com',
     password: '$2b$10$lxbrnTmsgf8MyTfzABSSfek/pRbY2TEWJ5Uw4n.nmxyF536ysVZ1.',
 
   },

@@ -17,7 +17,7 @@ class User {
   static register(req, res) {
     const Userone = req.body;
     let message = '';
-    users.forEach((newUser) => {
+    users.map((newUser) => {
       if (newUser.email === Userone.email) {
         message = 'user already exists';
       }
