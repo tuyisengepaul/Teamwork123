@@ -13,14 +13,14 @@ Teamwork is an ​internal social network for organizations’ employees. The go
 2. [Technologies](#technologies)
 
 3. [Tools](#tools)
-  3.1. [Front_end_tools](#Frontend_Tools)
-  3.2. [Back_end_tools](#Backend_Tools)
+  - [Front_end_tools](#Frontend_Tools)
+  - [Back_end_tools](#Backend_Tools)
 
 4. [Getting started](#Getting_started)
-  4.1. [Prerequisite]
-  4.2. [Step](#Steps)
-  4.3. [Endpoints](#Endpoints)
-  4.4. [Tests](#Running_Unit_Test)
+  - [Prerequisite]
+  - [Step](#Steps)
+  - [Endpoints](#Endpoints)
+  - [Tests](#Running_Unit_Test)
 
 [Acknowledgment](#acknowledgments)
 
