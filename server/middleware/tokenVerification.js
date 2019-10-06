@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import Database from '../database/dbquerie';
 
 dotenv.config();
-const isLoggedin = (req, res, next) => {
+const isLoggedin = async (req, res, next) => {
   if (req.headers.authorization === undefined) {
     return res.status(401).send({
       status: '401',
@@ -19,13 +20,8 @@ const isLoggedin = (req, res, next) => {
 
   try {
     const decodedToken = jwt.verify(token, process.env.TOKEN_KEYS);
-    let userData = '';
-    users.map((user) => {
-      if (user.email === decodedToken.payLoad) {
-        userData = user;
-      }
-    });
-    req.user = userData;
+    const exitUser = await Database.selectBy('users', 'email', decodedToken.payLoad);
+    req.user = exitUser.rows[0];
     return next();
   } catch (error) {
     return res.status(401).send({

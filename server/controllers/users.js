@@ -91,11 +91,12 @@ class User {
  * @param {object} res
  * @description Thi method help the admin to get all the users/
  */
-  static AllUsers(req, res) {
+  static async AllUsers(req, res) {
+    const data = await Database.selectAll('users');
     return res.status(200).json({
       status: '200',
       message: 'success',
-      users,
+      data: data.rows,
     });
   }
 }

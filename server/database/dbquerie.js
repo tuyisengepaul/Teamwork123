@@ -64,6 +64,13 @@ class Database extends Environment {
     await conn.end();
     return result;
   }
+
+  static async selectAll(tableName) {
+    const conn = this.dbConnection();
+    const result = await conn.query(`SELECT * FROM ${tableName};`);
+    await conn.end();
+    return result;
+  }
 }
 
 export default Database;
