@@ -42,7 +42,8 @@ class Database extends Environment {
 
   static async createUser(data) {
     const conn = this.dbConnection();
-    const result = await conn.query(`INSERT INTO users(firstname, lastname, email, password, gender, jobrole, department,address,type) VALUES(
+    const result = await conn.query(`INSERT INTO users(firstname, lastname, email, password, gender, jobrole, department,address,type) 
+    VALUES(
       '${data.firstName}',
       '${data.lastName}',
       '${data.email}',
