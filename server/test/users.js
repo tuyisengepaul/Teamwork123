@@ -79,7 +79,7 @@ describe('POST </api/v1/auth/signup>  sign up', () => {
 });
 
 describe('POST <api/v1/auth/signin>  sign in', () => {
-  it('User should sign in', () => {
+  it('User should sign in', (done) => {
     chai
       .request(app)
       .post('/api/v1/auth/signin')
@@ -87,10 +87,11 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.have.be.a('object');
+        done();
       });
   });
 
-  it('sign in validation', () => {
+  it('sign in validation', (done) => {
     chai
       .request(app)
       .post('/api/v1/auth/signin')
@@ -98,21 +99,11 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.have.be.a('object');
+        done();
       });
   });
-
-  it('check if username and password are valid', () => {
-    chai
-      .request(app)
-      .post('/api/v1/auth/signup')
-      .send(user[3])
-      .end((err, res) => {
-        res.should.have.status(400);
-        res.body.should.have.be.a('object');
-      });
-  });
-
-  it('check if credentialss are corrrect', () => {
+  
+  it('check if credentialss are corrrect', (done) => {
     chai
       .request(app)
       .post('/api/v1/auth/signin')
@@ -120,6 +111,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.have.be.a('object');
+        done();
       });
   });
 });
