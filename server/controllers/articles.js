@@ -1,4 +1,6 @@
 
+import Database from '../database/dbquerie';
+
 /**
  * @description classs this class contains methods for manipulating articles,
  * (Create new article, edit an article and delete);
@@ -9,33 +11,27 @@ class allAboutArticle {
    * @param {object} req
    * @param {object} res
    */
-  static newArticle(req, res) {
-    let message = '';
-    articles.map((article) => {
-      if (article.article === req.body.article) {
-        message = 'This article alread exist';
-      }
-    });
-    if (message) {
+  static async newArticle(req, res) {
+    const existArticle = await Database.selectBy('articles', 'article', req.body.article);
+    if (existArticle.rowCount !== 0) {
       return res.status(409).json({
         status: '409',
-        message,
+        message: 'This article alread exist',
       });
     }
     let todayDate = new Date();
     const data = {
-      id: IdProider(articles),
       creatorid: req.user.id,
       title: req.body.title,
       article: req.body.article,
       createdOn: todayDate,
       flag: 0,
     };
-    articles.push(data);
+    const result = await Database.createArticle(data);
     return res.status(201).json({
       status: '201',
       message: 'article successfuly created',
-      data,
+      data: result.rows[0],
     });
   }
 

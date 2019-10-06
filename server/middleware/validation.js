@@ -1,5 +1,5 @@
 import {
-  article, commente, userSignup, userSignin,
+  article, comment, userSignup, userSignin,
 } from '../helpers/validation';
 import valid from '../helpers/validateFc';
 
@@ -20,7 +20,7 @@ class Validate {
   }
 
   static addComment(req, res, next) {
-    valid(req, res, next, commente);
+    valid(req, res, next, comment);
   }
 
   static userRegister(req, res, next) {

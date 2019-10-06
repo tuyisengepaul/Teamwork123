@@ -23,7 +23,7 @@ const article = Joi.object().keys({
   article: Joi.string().required(),
 });
 
-const commente = Joi.object().keys({
+const comment = Joi.object().keys({
   comment: Joi.string().required(),
 });
 
@@ -37,5 +37,5 @@ const parameterFlag = Joi.object().keys({
 });
 
 export {
-  userSignup, userSignin, article, commente, parameter, parameterFlag,
+  userSignup, userSignin, article, comment, parameter, parameterFlag,
 };
