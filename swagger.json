@@ -1,0 +1,572 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Teamwork",
+        "description": "Teamwork is an ​internal social network for organizations’ employees. The goal of this application is to facilitate more interaction between colleagues and facilitate team bonding.",
+        "license": {
+            "name": "ISC",
+            "url": "https://github.com/tuyisengepaul/Teamwork"
+        }
+    },
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "User signin, User signup , Get all users"
+        },
+        {
+            "name": "Articles",
+            "description": "Create an article, edit an article, flag an article, delete an article"
+        },
+        {
+            "name": "Comment",
+            "description": "Post a comment, flag a comment, delete flagged comment"
+        }
+    ],
+    "schemes": [
+        "https",
+        "http"
+    ],   
+     "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "New user signup",
+                "description": "Register a new user",
+                "parameters": [
+                    {
+                        "name": "users",
+                        "in": "body",
+                        "description": "User to be created",
+                        "schema": {
+                            "$ref": "#/definitions/signup"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User successfuly created"
+                    },
+                    "401": {
+                        "description": "User already exists"
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+              "tags": [
+                "Users"
+              ],
+              "summary": "Login a user",
+              "description": "Authenticate a user for minutes",
+              "parameters": [
+                {
+                  "name": "users",
+                  "in": "body",
+                  "description": "User signin in a system",
+                  "schema": {
+                    "$ref": "#/definitions/signin"
+                  }
+                }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "200": {
+                  "description": "successfully signin"
+                },
+                "400": {
+                  "description": "Validate input"
+                },
+                "404": {
+                  "description": "ser not found, Incorrect email or password"
+                }
+              }
+            }
+          },
+          "/articles": {
+            "post": {
+              "tags": [
+                "Articles"
+              ],
+              "summary": "Create a new Articles",
+              "description": "Enable staff to create an Articles",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                {
+                  "name": "Article",
+                  "in": "body",
+                  "description": "create Articles",
+                  "schema": {
+                    "$ref": "#/definitions/articles"
+                  }
+                }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Articles created successfully"
+                },
+                "400": {
+                  "description": "validate your input"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/articles ": {
+            "get": {
+              "tags": [
+                "Articles"
+              ],
+              "summary": "Get all articless",
+              "description": "Allow staff to Get All articles",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Success"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/articles/{id}": {
+            "get": {
+              "tags": [
+                "Articles"
+              ],
+              "summary": "Get a specific article",
+              "description": "Allow staff to Get a specific article",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Enter article id",
+                    "required": true,
+                    "type": "integer"
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Success"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/articles/{articleId}": {
+            "patch": {
+              "tags": [
+                "Articles"
+              ],
+              "summary": "Edit an article",
+              "description": "A user will be able to edit his article",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "articleId",
+                    "in": "path",
+                    "description": "Enter article id",
+                    "required": true,
+                    "type": "integer"
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Successfuly Updated"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "403": {
+                  "description": "You are not Allowed this kind of request"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/articles/{id}/flag": {
+            "patch": {
+              "tags": [
+                "Articles"
+              ],
+              "summary": "Flag an article",
+              "description": "A user will be able to flag an article as inappropriete",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Enter article id",
+                    "required": true,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "flag",
+                    "in": "path",
+                    "description": "Write a word `flag` ",
+                    "required": true,
+                    "type": "string"
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Successfuly flagged"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "403": {
+                  "description": "You are not allowed this kind of request"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/articles/{id} ": {
+            "delete": {
+              "tags": [
+                "Articles"
+              ],
+              "summary": "Delete an article",
+              "description": "A user will be able to delete his article, Admin will be able to delete flagged article",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Enter article id",
+                    "required": true,
+                    "type": "integer"
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Successfuly deleted"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "403": {
+                  "description": "You are not allowed this kind of request"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/comments/{id} ": {
+            "post": {
+              "tags": [
+                "Comment"
+              ],
+              "summary": "Post a comment",
+              "description": "A user will be able comment on other's article",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Enter article id",
+                    "required": true,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "Comment",
+                    "in": "body",
+                    "description": "Post a comment",
+                    "schema": {
+                      "$ref": "#/definitions/comments"
+                    }
+                  }
+
+             ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Successfuly commented on the article"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "403": {
+                  "description": "You are not allowed thiss kind of request"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/comments/{commentId} ": {
+            "patch": {
+              "tags": [
+                "Comment"
+              ],
+              "summary": "Flag a comment",
+              "description": "A user will be able to flag a comment as inapropriete",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "commentId",
+                    "in": "path",
+                    "description": "Enter comment id",
+                    "required": true,
+                    "type": "integer"
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Successfuly commented on the article"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          },
+          "/comments/{cmtId} ": {
+            "delete": {
+              "tags": [
+                "Comment"
+              ],
+              "summary": "Delete a comment",
+              "description": "A user will be able to flag a comment as inapropriete",
+              "parameters": [
+                {
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Check token authentication",
+                    "required": true
+                  },
+                  {
+                    "name": "cmtId",
+                    "in": "path",
+                    "description": "Enter comment id",
+                    "required": true,
+                    "type": "integer"
+                  }
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "201": {
+                  "description": "Comment succesfuly deleted"
+                },
+                "400": {
+                  "description": "validate your input value"
+                },
+                "404": {
+                  "description": "Article not found"
+                },
+                "403": {
+                  "description": "Unauthorized"
+                },
+                "401": {
+                  "description": "Set Authorization header"
+                }
+              }
+            }
+          }
+    },
+    "definitions": {
+        "signup": {
+            "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "gender",
+                "jobRole",
+                "department",
+                "address"
+            ],
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "gender":{
+                    "type": "string"
+                },
+                "jobRole" :{
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "signin": {
+          "required": [
+            "email",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "articles": {
+            "required": [
+                "title",
+                "article"
+            ],
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "article": {
+                "type": "string"
+              }
+            }
+          },
+          "comments": {
+            "required": [
+                "comment"
+            ],
+            "type": "object",
+            "properties": {
+              "comment": {
+                "type": "string"
+              }
+            }
+          }
+    }
+}
