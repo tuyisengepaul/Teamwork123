@@ -1,6 +1,3 @@
-import articles from '../models/articles';
-import IdProider from '../helpers/idprovider';
-
 
 /**
  * @description classs this class contains methods for manipulating articles,

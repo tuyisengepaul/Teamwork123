@@ -1,8 +1,6 @@
 import incodePass from 'bcrypt';
-import users from '../models/users';
-import IdProider from '../helpers/idprovider';
 import Token from '../helpers/token';
-
+import Database from '../database/dbquerie';
 /**
  * @author Jean Paul Tuyisenge
  * @description This class contains methods for registering user, sign in and fetch user /
@@ -14,22 +12,17 @@ class User {
    * @param {object} res
    * @description This method allows the user to register himself /
    */
-  static register(req, res) {
+  static async register(req, res) {
     const Userone = req.body;
-    let message = '';
-    users.map((newUser) => {
-      if (newUser.email === Userone.email) {
-        message = 'user already exists';
-      }
-    });
-    if (message) {
+    const exitUser = await Database.selectBy('users', 'email', Userone.email);
+
+    if (exitUser.rowCount !== 0) {
       return res.status(409).json({
         status: '409',
-        message,
+        message: 'user alread exist!',
       });
     }
     const data = {
-      id: IdProider(users),
       firstName: Userone.firstName,
       lastName: Userone.lastName,
       email: Userone.email,
@@ -40,12 +33,11 @@ class User {
       address: Userone.address,
       type: 'staff',
     };
-
-    users.push(data);
+    const result = await Database.createUser(data);
     return res.status(201).json({
       status: '201',
       message: 'user added',
-      data,
+      data: result.rows[0],
     });
   }
 
