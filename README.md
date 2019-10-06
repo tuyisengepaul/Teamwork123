@@ -13,18 +13,18 @@ Teamwork is an ​internal social network for organizations’ employees. The go
 2. [Technologies](#technologies)
 
 3. [Tools](#tools)
-  - [Front_end_tools](#Frontend_Tools)
-  - [Back_end_tools](#Backend_Tools)
+     - [Front_end_tools](#Frontend_Tools)
+     - [Back_end_tools](#Backend_Tools)
 
 4. [Getting started](#Getting_started)
-  - [Prerequisite]
-  - [Step](#Steps)
-  - [Endpoints](#Endpoints)
-  - [Tests](#Running_Unit_Test)
+     - [Prerequisite](#Prerequisites)
+     - [Step](#Steps)
+     - [Endpoints](#Endpoints)
+     - [Tests](#Running_Unit_Test)
 
-[Acknowledgment](#acknowledgments)
+5. [Acknowledgment](#acknowledgments)
 
-[Author](#author)
+6. [Author](#author)
  
 ## Links
 
@@ -34,21 +34,23 @@ Pivotal Tracker Stories can found here [Pivotal tracker](https://www.pivotaltrac
 
 Application was deployed to Heroku. Use public URL [Teamwork](https://teamworkproject.herokuapp.com/).
 
+API Swagger documentation. [Swagger documentation](https://teamworkproject.herokuapp.com/docs/)
+
 ## Technologies
 
 
-- [Node.js](https://nodejs.org/) Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-- [Express.js](https://expressjs.com) - Web application framework based on Node.js.
-- [ESLint](https://eslint.org/) - ESLint is an open source project whose aim is to provide a pluggable linting utility for JavaScript.
-- [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) styling guide.
+   - [Node.js](https://nodejs.org/) Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+  - [Express.js](https://expressjs.com) - Web application framework based on Node.js.
+  - [ESLint](https://eslint.org/) - ESLint is an open source project whose aim is to provide a pluggable linting utility for JavaScript.
+  - [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) styling guide.
 
 ## Tools
 
 ### Frontend_Tools
 
-- ```HTML``` - Hypertext Markup Language is the standard markup language for documents designed to be displayed in a web browser.
-- ```CSS``` - Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML.
-- ```Javascript``` - A Jvascript is an object-oriented computer programming language commonly used to create interactive effects within web browsers.
+  - ```HTML``` - Hypertext Markup Language is the standard markup language for documents designed to be displayed in a web browser.
+  - ```CSS``` - Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML.
+  - ```Javascript``` - A Jvascript is an object-oriented computer programming language commonly used to create interactive effects within web browsers.
 
 ### Backend_Tools
 
@@ -63,20 +65,20 @@ Application was deployed to Heroku. Use public URL [Teamwork](https://teamworkpr
 
 ## Getting_started
 
-#### Prerequisitess
+#### Prerequisites
 
-- You need to have Nodejs [environment](https://nodejs.org/en/)
-- Text Editor [Microsoft Visual studio code](https://code.visualstudio.com/)
-- Github bash [terminal](https://git-scm.com/downloads) 
-- Postman API [development](https://www.getpostman.com/)
+  - You need to have Nodejs [environment](https://nodejs.org/en/)
+  - Text Editor [Microsoft Visual studio code](https://code.visualstudio.com/)
+  - Github bash [terminal](https://git-scm.com/downloads) 
+  - Postman API [development](https://www.getpostman.com/)
 
 #### Steps
- 1. Clone this project to your local machine
- 2. Update packages by installing dependencies
+  1. Clone this project to your local machine
+  2. Update packages by installing dependencies
     >npm install
- 3. Start local server of application
+  3. Start local server of application
     >npm run dev
- 4. Use Postman to test all API endpoints
+  4. Use Postman to test all API endpoints
 
 #### Endpoints
 
@@ -97,16 +99,16 @@ Application was deployed to Heroku. Use public URL [Teamwork](https://teamworkpr
 
 
 #### Running_Unit_Test
-- Run test for all endpoints
+  - Run test for all endpoints
   > npm test
 
 ## Acknowledgments
 
-- [Andela](https://andela.com/)
+  - [Andela](https://andela.com/)
 
 ## Author
 
-- [Tuyisenge Jean Paul](https://www.linkedin.com/in/tuyisenge-jean-paul)
+  - [Tuyisenge Jean Paul](https://www.linkedin.com/in/tuyisenge-jean-paul)
 
 
 

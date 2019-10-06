@@ -6,7 +6,6 @@ import usersRouter from './routes/users';
 import articleRouter from './routes/articles';
 import comment from './routes/comments';
 
-
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
