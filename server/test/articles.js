@@ -7,6 +7,7 @@ import Token from '../helpers/token';
 chai.use(chaiHttp);
 chai.should();
 const staffToken = Token('bugingo​@gmail.com');
+const newstaffToken = Token('invalid@gmail.com');
 
 describe('post </api/v1/articles>  create article api', () => {
   it('article should be created', (done) => {
@@ -204,6 +205,34 @@ describe('Get </api/v1/articles> Get a specific Article api', () => {
         done();
       });
   });
+
+
+  describe('get </api/v1/myarticles>  Get my articles', () => {
+    it('User will be able to get all his articles', (done) => {
+      chai
+        .request(app)
+        .get('/api/v1/myarticles')
+        .set('Authorization', `Bearer ${staffToken}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+    it('Check wether a user has articles yet', (done) => {
+      chai
+        .request(app)
+        .get('/api/v1/myarticles')
+        .set('Authorization', `Bearer ${newstaffToken}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.have.be.a('object');
+          done();
+        });
+    });
+
+  });
+
 
   it('it should verify if there is not athorization in header set', (done) => {
     chai
