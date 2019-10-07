@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import users from '../models/users';
 
 dotenv.config();
 const isLoggedin = (req, res, next) => {

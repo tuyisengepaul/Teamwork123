@@ -1,6 +1,3 @@
-import artcles from '../models/articles';
-import commentes from '../models/comments';
-
 class loggedinUser {
   static isAllowedToDcmt(req, res, next) {
     let message = '';

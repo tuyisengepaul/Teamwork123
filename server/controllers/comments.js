@@ -1,5 +1,3 @@
-import comments from '../models/comments';
-import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
 
 /**
