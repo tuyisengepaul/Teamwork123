@@ -47,27 +47,28 @@ class User {
  * @param {object} res
  * @description This method help the user to be signed in/
  */
-  static signin(req, res) {
+  static async signin(req, res) {
     let data = '';
     const { email } = req.body;
     const userData = req.body;
     let token = '';
-    users.map((user) => {
-      if (user.email === userData.email && incodePass.compareSync(userData.password, user.password)) {
+    const exitUser = await Database.selectBy('users', 'email', email);
+    if (exitUser.rowCount !== 0) {
+      if (exitUser.rows[0].email === userData.email && incodePass.compareSync(userData.password, exitUser.rows[0].password)) {
         token = Token(email);
         data = {
-          id: user.id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          password: user.password,
-          gender: user.gender,
-          jobRole: user.jobRole,
-          department: user.department,
-          address: user.address,
+          id: exitUser.rows[0].id,
+          firstName: exitUser.rows[0].firstName,
+          lastName: exitUser.rows[0].lastName,
+          email: exitUser.rows[0].email,
+          password: exitUser.rows[0].password,
+          gender: exitUser.rows[0].gender,
+          jobRole: exitUser.rows[0].jobRole,
+          department: exitUser.rows[0].department,
+          address: exitUser.rows[0].address,
         };
       }
-    });
+    }
 
 
     if (!data) {
