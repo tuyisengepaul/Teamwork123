@@ -6,7 +6,7 @@ import Token from '../helpers/token';
 
 chai.use(chaiHttp);
 chai.should();
-const staffToken = Token('bugingo​@gmail.com');
+const staffToken = Token('karangwajoel@gmail.com');
 
 describe('post </api/v1/articles>  create article api', () => {
   it('article should be created', (done) => {
@@ -39,7 +39,7 @@ describe('post </api/v1/articles>  create article api', () => {
     chai
       .request(app)
       .post('/api/v1/articles')
-      .send(articles[1])
+      .send(articles[0])
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(409);
