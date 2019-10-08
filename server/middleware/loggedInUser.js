@@ -1,6 +1,6 @@
 import artcles from '../models/articles';
 import commentes from '../models/comments';
-import returnFc from '../helpers/returnFc';
+import returnResponse from '../helpers/returnResponse';
 
 class loggedinUser {
   static isAllowedToDcmt(req, res, next) {
@@ -13,10 +13,9 @@ class loggedinUser {
     });
 
     if (message !== 'ok') {
-      returnFc(req, res, '403', 'You are not allowed this kind of request');
-    } else {
-      return next();
+      return returnResponse(req, res, '403', 'You are not allowed this kind of request');
     }
+    return next();
   }
 
   static isAllowed(req, res, next) {
@@ -27,10 +26,10 @@ class loggedinUser {
         message = 'ok';
       } else if (article.creatorid === req.user.id && article.id === id) {
         message = 'ok';
-      }
+      } else message = '';
     });
     if (message !== 'ok') {
-      returnFc(req, res, '403', 'You are not allowed this kind of request');
+      returnResponse(req, res, '403', 'You are not allowed this kind of request');
     } else {
       return next();
     }
@@ -45,7 +44,7 @@ class loggedinUser {
       }
     });
     if (message !== 'ok') {
-      returnFc(req, res, '403', 'you are not allowed to edit others article');
+      returnResponse(req, res, '403', 'you are not allowed to edit others article');
     } else {
       return next();
     }
@@ -53,10 +52,9 @@ class loggedinUser {
 
   static isAdmin(req, res, next) {
     if (req.user.type !== 'admin') {
-      returnFc(req, res, '403', 'You are not allowed this kind of request, Only Admin');
-    } else {
-      return next();
+      return returnResponse(req, res, '403', 'You are not allowed this kind of request, Only Admin');
     }
+    return next();
   }
 }
 

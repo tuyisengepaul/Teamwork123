@@ -2,7 +2,7 @@ import incodePass from 'bcrypt';
 import articles from '../models/articles';
 import comments from '../models/comments';
 import users from '../models/users';
-import returnFc from '../helpers/returnFc';
+import returnResponse from '../helpers/returnResponse';
 
 const notfound = (req, res, next, message, data) => {
   const id = parseInt(req.params.id, 10);
@@ -13,7 +13,7 @@ const notfound = (req, res, next, message, data) => {
     }
   });
   if (!searchData) {
-    returnFc(req, res, 404, message);
+    returnResponse(req, res, 404, message);
   } else {
     return next();
   }
@@ -31,8 +31,9 @@ class Availability {
     });
 
     if (message !== 'ok') {
-      returnFc(req, res, 404, 'No Article is yet created');
+      returnResponse(req, res, 404, 'No Article is yet created');
     } else {
+      console.log('article i there - NEXT');
       return next();
     }
   }
@@ -45,7 +46,7 @@ class Availability {
       }
     });
     if (message) {
-      returnFc(req, res, 409, message);
+      returnResponse(req, res, 409, message);
     } else {
       return next();
     }
@@ -68,7 +69,7 @@ class Availability {
       }
     });
     if (message) {
-      returnFc(req, res, 409, message);
+      returnResponse(req, res, 409, message);
     } else {
       return next();
     }
@@ -82,7 +83,7 @@ class Availability {
       }
     });
     if (message) {
-      returnFc(req, res, 409, message);
+      returnResponse(req, res, 409, message);
     } else {
       return next();
     }
@@ -96,7 +97,7 @@ class Availability {
       }
     });
     if (!data) {
-      returnFc(req, res, 404, 'User not found, Incorrect email or password');
+      returnResponse(req, res, 404, 'User not found, Incorrect email or password');
     } else {
       return next();
     }

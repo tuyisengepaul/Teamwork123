@@ -1,6 +1,6 @@
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
-import returnFc from '../helpers/returnFc';
+import returnResponse from '../helpers/returnResponse';
 
 
 /**
@@ -24,7 +24,7 @@ class allAboutArticle {
       flag: 0,
     };
     articles.push(data);
-    returnFc(req, res, '201', 'article successfuly created', data);
+    returnResponse(req, res, '201', 'article successfuly created', data);
   }
 
   /**
@@ -47,7 +47,7 @@ class allAboutArticle {
         message = 'Article updated successfuly';
       }
     });
-    returnFc(req, res, '200', message);
+    returnResponse(req, res, '200', message);
   }
 
   /**
@@ -65,7 +65,7 @@ class allAboutArticle {
         message = 'Article deleted successfuly';
       }
     });
-    returnFc(req, res, '200', message);
+    returnResponse(req, res, '200', message);
   }
 
   /**
@@ -80,7 +80,7 @@ class allAboutArticle {
       const dateB = new Date(b.createdOn);
       return dateB - dateA;
     });
-    returnFc(req, res, '200', 'success', data);
+    returnResponse(req, res, '200', 'success', data);
   }
 
   /**
@@ -95,7 +95,7 @@ class allAboutArticle {
         return true;
       }
     });
-    returnFc(req, res, '200', 'success', myArticles);
+    returnResponse(req, res, '200', 'success', myArticles);
   }
 
 
@@ -113,7 +113,7 @@ class allAboutArticle {
         data = article;
       }
     });
-    returnFc(req, res, '200', 'success', data);
+    returnResponse(req, res, '200', 'success', data);
   }
 }
 
