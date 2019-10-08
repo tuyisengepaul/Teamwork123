@@ -16,13 +16,26 @@ const users = [
     firstName: 'bugingo​',
     lastName: 'aime',
     email: 'bugingo​@gmail.com',
-    password: 'ok',
+    password: '$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK',
     gender: 'male',
     jobRole: 'manager',
     department: 'it',
     address: 'gikondo',
     type: 'staff',
   },
+  {
+    id: 3,
+    firstName: 'Tuyisenge​',
+    lastName: 'Paul',
+    email: 'tuspaul​@gmail.com',
+    password: '$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK',
+    gender: 'male',
+    jobRole: 'manager',
+    department: 'it',
+    address: 'gikondo',
+    type: 'staff',
+  },
+
 
 ];
 export default users;

@@ -125,6 +125,26 @@ class allAboutArticle {
    * @author Tuyisenge J.Paul
    * @param {object} req
    * @param {object} res
+   * @description This method is used to get all articles
+   */
+  static myArticle(req, res) {
+    const myArticles = articles.filter((article) => {
+      if (article.creatorid === req.user.id) {
+        return true;
+      }
+    });
+    return res.status(200).json({
+      status: '200',
+      message: 'success',
+      myArticles,
+    });
+  }
+
+
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
    * @description This method is used to get a specific article
    */
   static getSpecificArticle(req, res) {
