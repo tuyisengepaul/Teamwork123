@@ -1,5 +1,6 @@
 import artcles from '../models/articles';
 import commentes from '../models/comments';
+import returnFc from '../helpers/returnFc';
 
 class loggedinUser {
   static isAllowedToDcmt(req, res, next) {
@@ -12,12 +13,10 @@ class loggedinUser {
     });
 
     if (message !== 'ok') {
-      return res.status(403).json({
-        status: '403',
-        message: 'you are not allowed this kind of request only admin',
-      });
+      returnFc(req, res, '403', 'You are not allowed this kind of request');
+    } else {
+      return next();
     }
-    return next();
   }
 
   static isAllowed(req, res, next) {
@@ -31,12 +30,10 @@ class loggedinUser {
       }
     });
     if (message !== 'ok') {
-      return res.status(403).json({
-        status: '403',
-        message: 'you are not allowed to edit others article',
-      });
+      returnFc(req, res, '403', 'You are not allowed this kind of request');
+    } else {
+      return next();
     }
-    return next();
   }
 
   static isAllowedToEdit(req, res, next) {
@@ -48,22 +45,18 @@ class loggedinUser {
       }
     });
     if (message !== 'ok') {
-      return res.status(403).json({
-        status: '403',
-        message: 'you are not allowed to edit others article',
-      });
+      returnFc(req, res, '403', 'you are not allowed to edit others article');
+    } else {
+      return next();
     }
-    return next();
   }
 
   static isAdmin(req, res, next) {
     if (req.user.type !== 'admin') {
-      return res.status(403).json({
-        status: '403',
-        message: 'You are not allowed this kind of request, Only Admin',
-      });
+      returnFc(req, res, '403', 'You are not allowed this kind of request, Only Admin');
+    } else {
+      return next();
     }
-    return next();
   }
 }
 

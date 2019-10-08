@@ -1,5 +1,6 @@
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
+import returnFc from '../helpers/returnFc';
 
 
 /**
@@ -13,18 +14,6 @@ class allAboutArticle {
    * @param {object} res
    */
   static newArticle(req, res) {
-    let message = '';
-    articles.map((article) => {
-      if (article.article === req.body.article) {
-        message = 'This article alread exist';
-      }
-    });
-    if (message) {
-      return res.status(409).json({
-        status: '409',
-        message,
-      });
-    }
     let todayDate = new Date();
     const data = {
       id: IdProider(articles),
@@ -35,11 +24,7 @@ class allAboutArticle {
       flag: 0,
     };
     articles.push(data);
-    return res.status(201).json({
-      status: '201',
-      message: 'article successfuly created',
-      data,
-    });
+    returnFc(req, res, '201', 'article successfuly created', data);
   }
 
   /**
@@ -62,17 +47,7 @@ class allAboutArticle {
         message = 'Article updated successfuly';
       }
     });
-
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Article not found',
-    });
+    returnFc(req, res, '200', message);
   }
 
   /**
@@ -90,16 +65,7 @@ class allAboutArticle {
         message = 'Article deleted successfuly';
       }
     });
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Article not found',
-    });
+    returnFc(req, res, '200', message);
   }
 
   /**
@@ -114,18 +80,14 @@ class allAboutArticle {
       const dateB = new Date(b.createdOn);
       return dateB - dateA;
     });
-    return res.status(200).json({
-      status: '200',
-      message: 'success',
-      data,
-    });
+    returnFc(req, res, '200', 'success', data);
   }
 
   /**
    * @author Tuyisenge J.Paul
    * @param {object} req
    * @param {object} res
-   * @description This method is used to get all articles
+   * @description This method is used to get my articles
    */
   static myArticle(req, res) {
     const myArticles = articles.filter((article) => {
@@ -133,11 +95,7 @@ class allAboutArticle {
         return true;
       }
     });
-    return res.status(200).json({
-      status: '200',
-      message: 'success',
-      myArticles,
-    });
+    returnFc(req, res, '200', 'success', myArticles);
   }
 
 
@@ -155,16 +113,7 @@ class allAboutArticle {
         data = article;
       }
     });
-    if (data) {
-      return res.status(200).json({
-        status: '200',
-        data,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Article not found',
-    });
+    returnFc(req, res, '200', 'success', data);
   }
 }
 
