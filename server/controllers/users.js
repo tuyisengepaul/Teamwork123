@@ -1,7 +1,9 @@
 import incodePass from 'bcrypt';
+import lodash from 'lodash';
 import users from '../models/users';
 import IdProider from '../helpers/idprovider';
 import Token from '../helpers/token';
+import returnFc from '../helpers/returnFc';
 
 /**
  * @author Jean Paul Tuyisenge
@@ -16,18 +18,6 @@ class User {
    */
   static register(req, res) {
     const Userone = req.body;
-    let message = '';
-    users.map((newUser) => {
-      if (newUser.email === Userone.email) {
-        message = 'user already exists';
-      }
-    });
-    if (message) {
-      return res.status(409).json({
-        status: '409',
-        message,
-      });
-    }
     const data = {
       id: IdProider(users),
       firstName: Userone.firstName,
@@ -40,13 +30,9 @@ class User {
       address: Userone.address,
       type: 'staff',
     };
-
     users.push(data);
-    return res.status(201).json({
-      status: '201',
-      message: 'user added',
-      data,
-    });
+    const displayData = lodash.pick(data, ['firstName', 'lastName', 'email', 'gender', 'department', 'address', 'type']);
+    returnFc(req, res, '201', 'user added', displayData);
   }
 
   /**
@@ -76,20 +62,7 @@ class User {
         };
       }
     });
-
-
-    if (!data) {
-      return res.status(404).send({
-        status: 404,
-        message: 'User not found, Incorrect email or password',
-      });
-    }
-    return res.status(200).send({
-      status: '200',
-      message: 'login successfuly',
-      token,
-      data,
-    });
+    returnFc(req, res, '200', 'login successfuly', token);
   }
 
   /**
@@ -99,12 +72,13 @@ class User {
  * @description Thi method help the admin to get all the users/
  */
   static AllUsers(req, res) {
-    return res.status(200).json({
-      status: '200',
-      message: 'success',
-      users,
-    });
+    let data = [];
+
+    for (let item = 0; item <= users.length - 1; item += 1) {
+      let object = lodash.pick(users[item], ['firstName', 'lastName', 'email', 'gender', 'department', 'address', 'type']);
+      data.push(object);
+    }
+    returnFc(req, res, '200', 'success');
   }
 }
-
 export default User;

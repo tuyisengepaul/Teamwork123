@@ -1,6 +1,7 @@
 import comments from '../models/comments';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
+import returnFc from '../helpers/returnFc';
 
 /**
  * @author Tuyisenge Jean Paul
@@ -16,50 +17,28 @@ class comment {
   static createComment(req, res) {
     const articleid = parseInt(req.params.id, 10);
     let existArticle = '';
-    let message = '';
     articles.map((article) => {
       if (article.id === articleid) {
         existArticle = article;
       }
     });
-    comments.map((newcomment) => {
-      if (req.body.comment === newcomment.comment && articleid === newcomment.articleId) {
-        message = 'Alread exist';
-      }
-    });
-    if (message) {
-      return res.status(409).json({
-        status: '409',
-        message,
-      });
-    }
-    if (existArticle) {
-      let todayDate = new Date();
-      const data = {
-        id: IdProider(comments),
-        articleId: existArticle.id,
-        comment: req.body.comment,
-        createdOn: todayDate,
-        status: 'unflagging',
-      };
-      comments.push(data);
-      return res.status(201).json({
-        status: '201',
-        message: 'comment added',
-        data: {
-          createdOn: data.createdOn,
-          articleTitle: existArticle.title,
-          article: existArticle.article,
-          comment: data.comment,
-          status: 'unflagging',
-        },
-      });
-    }
-
-    return res.status(404).json({
-      status: '401',
-      message: 'Article not found',
-    });
+    let todayDate = new Date();
+    const data = {
+      id: IdProider(comments),
+      articleId: existArticle.id,
+      comment: req.body.comment,
+      createdOn: todayDate,
+      status: 'unflagging',
+    };
+    const returndata = {
+      createdOn: data.createdOn,
+      articleTitle: existArticle.title,
+      article: existArticle.article,
+      comment: data.comment,
+      status: 'unflagging',
+    };
+    comments.push(data);
+    returnFc(req, res, '201', 'comment added', returndata);
   }
 
   /**
@@ -77,16 +56,8 @@ class comment {
         message = comment;
       }
     });
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'comment not found',
-    });
+
+    returnFc(req, res, '200', message);
   }
 
   /**
@@ -98,22 +69,13 @@ class comment {
   static deleteComment(req, res) {
     const commentid = parseInt(req.params.id, 10);
     let message = '';
-    comments.map((comment, index) => {
-      if (comment.id === commentid && comment.flag > 0) {
+    comments.map((comment1, index) => {
+      if (comment1.id === commentid && comment1.flag > 0) {
         comments.splice(index, 1);
         message = 'comment deleted successfuly';
       }
     });
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Imposible to delete unflagging or unexistence comment',
-    });
+    returnFc(req, res, '200', message);
   }
 }
 
