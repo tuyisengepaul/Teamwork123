@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import users from '../models/users';
 import IdProider from '../helpers/idprovider';
 import Token from '../helpers/token';
-import returnFc from '../helpers/returnFc';
+import returnResponse from '../helpers/returnResponse';
 
 /**
  * @author Jean Paul Tuyisenge
@@ -32,7 +32,7 @@ class User {
     };
     users.push(data);
     const displayData = lodash.pick(data, ['firstName', 'lastName', 'email', 'gender', 'department', 'address', 'type']);
-    returnFc(req, res, '201', 'user added', displayData);
+    returnResponse(req, res, '201', 'user added', displayData);
   }
 
   /**
@@ -62,7 +62,7 @@ class User {
         };
       }
     });
-    returnFc(req, res, '200', 'login successfuly', token);
+    returnResponse(req, res, '200', 'login successfuly', token);
   }
 
   /**
@@ -78,7 +78,7 @@ class User {
       let object = lodash.pick(users[item], ['firstName', 'lastName', 'email', 'gender', 'department', 'address', 'type']);
       data.push(object);
     }
-    returnFc(req, res, '200', 'success');
+    returnResponse(req, res, '200', 'success');
   }
 }
 export default User;

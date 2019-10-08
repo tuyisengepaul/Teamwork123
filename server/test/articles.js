@@ -9,6 +9,44 @@ chai.should();
 const staffToken = Token('bugingo​@gmail.com');
 const newstaffToken = Token('invalid@gmail.com');
 
+describe(' token verification', () => {
+  it('it should verify if there is not athorization in header set', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/articles/1')
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.have.be.a('object');
+        done();
+      });
+  });
+
+  it('it should verify if there is not token in header', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/articles/1')
+      .set('Authorization', 'Bearer')
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.have.be.a('object');
+        done();
+      });
+  });
+
+  it('it should verify if there is not token in header', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/articles/1')
+      .set('Authorization', 'Bearer aaaaaaaaaaaa')
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.have.be.a('object');
+        // res.body.should.have.property('error').eql('You provided the invalid token!');
+        done();
+      });
+  });
+});
+
 describe('post </api/v1/articles>  create article api', () => {
   it('article should be created', (done) => {
     chai
@@ -230,45 +268,5 @@ describe('Get </api/v1/articles> Get a specific Article api', () => {
           done();
         });
     });
-
-  });
-
-
-  it('it should verify if there is not athorization in header set', (done) => {
-    chai
-      .request(app)
-      .get('/api/v1/articles/1')
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.have.be.a('object');
-        res.body.should.have.property('error').eql('Please Set The Authorization Header!');
-        done();
-      });
-  });
-
-  it('it should verify if there is not token in header', (done) => {
-    chai
-      .request(app)
-      .get('/api/v1/articles/1')
-      .set('Authorization', 'Bearer')
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.have.be.a('object');
-        res.body.should.have.property('error').eql('No token provided, Access Denied!');
-        done();
-      });
-  });
-
-  it('it should verify if there is not token in header', (done) => {
-    chai
-      .request(app)
-      .get('/api/v1/articles/1')
-      .set('Authorization', 'Bearer aaaaaaaaaaaa')
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.have.be.a('object');
-        res.body.should.have.property('error').eql('You provided the invalid token!');
-        done();
-      });
   });
 });

@@ -64,7 +64,7 @@ describe('post </api/v1/comments>  create comment api', () => {
 });
 
 describe('patch </api/v1/comments>  flag comment api', () => {
-  it('acomment should be flagged', (done) => {
+  it('a comment should be flagged', (done) => {
     chai
       .request(app)
       .patch('/api/v1/comments/1')

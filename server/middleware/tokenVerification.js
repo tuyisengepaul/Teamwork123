@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import users from '../models/users';
-import returnFc from '../helpers/returnFc';
+import returnResponse from '../helpers/returnResponse';
 
 dotenv.config();
 const isLoggedin = (req, res, next) => {
   if (req.headers.authorization === undefined) {
-    returnFc(req, res, '401', 'Please Set The Authorization Header!');
+    return returnResponse(req, res, 401, 'No token provided, Access Denied!');
   }
   const token = req.headers.authorization.split(' ')[1];
   if (!token) {
-    returnFc(req, res, '401', 'No token provided, Access Denied!');
+    return returnResponse(req, res, 401, 'No token provided, Access Denied!');
   }
 
   try {
@@ -24,7 +24,7 @@ const isLoggedin = (req, res, next) => {
     req.user = userData;
     return next();
   } catch (error) {
-    returnFc(req, res, '401', 'You provided the invalid token!');
+    return returnResponse(req, res, 401, 'You provided the invalid token!');
   }
 };
 export default isLoggedin;

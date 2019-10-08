@@ -1,7 +1,7 @@
 import comments from '../models/comments';
 import articles from '../models/articles';
 import IdProider from '../helpers/idprovider';
-import returnFc from '../helpers/returnFc';
+import returnResponse from '../helpers/returnResponse';
 
 /**
  * @author Tuyisenge Jean Paul
@@ -38,7 +38,7 @@ class comment {
       status: 'unflagging',
     };
     comments.push(data);
-    returnFc(req, res, '201', 'comment added', returndata);
+    returnResponse(req, res, '201', 'comment added', returndata);
   }
 
   /**
@@ -57,7 +57,7 @@ class comment {
       }
     });
 
-    returnFc(req, res, '200', message);
+    returnResponse(req, res, '200', message);
   }
 
   /**
@@ -75,7 +75,7 @@ class comment {
         message = 'comment deleted successfuly';
       }
     });
-    returnFc(req, res, '200', message);
+    returnResponse(req, res, '200', message);
   }
 }
 
