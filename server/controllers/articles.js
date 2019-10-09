@@ -77,6 +77,17 @@ class allAboutArticle {
     const data = await Database.selectBy('articles', 'id', articleid);
     return returnResponse(req, res, 200, 'success', data.rows);
   }
+
+  /**
+   * @author Tuyisenge J.Paul
+   * @param {object} req
+   * @param {object} res
+   * @description This method is used to get my articles
+   */
+  static async myArticle(req, res) {
+    const data = await Database.selectBy('articles', 'creatorid', req.user.id);
+    returnResponse(req, res, '200', 'success', data.rows);
+  }
 }
 
 export default allAboutArticle;
