@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.post('/articles', tokenVerification, Validate.newArticle, Availability.articleExist, articles.newArticle);
 router.get('/articles', tokenVerification, articles.getAllarticle);
-// router.get('/myarticles', tokenVerification, Availability.available, articles.myArticle);
+router.get('/myarticles', tokenVerification, Availability.available, articles.myArticle);
 router.get('/articles/:id', tokenVerification, paramCheck.parameterCheck, Availability.articleNotFound, articles.getSpecificArticle);
 router.patch('/articles/:id/:flag', tokenVerification, paramCheck.parameterCheckFlag, Availability.articleNotFound, articles.editArticle);
 router.patch('/articles/:id', tokenVerification, loggedInUser.isAllowedToEdit, paramCheck.parameterCheck, Availability.articleNotFound, articles.editArticle);
