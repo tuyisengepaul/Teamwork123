@@ -60,17 +60,9 @@ class allAboutArticle {
    * @param {object} res
    * @description This method is used to get all articles
    */
-  static getAllarticle(req, res) {
-    const data = articles.sort((a, b) => {
-      const dateA = new Date(a.createdOn);
-      const dateB = new Date(b.createdOn);
-      return dateB - dateA;
-    });
-    return res.status(200).json({
-      status: '200',
-      message: 'success',
-      data,
-    });
+  static async getAllarticle(req, res) {
+    const data = await Database.selectAllOrderBy('articles', 'createdOn', 'desc');
+    return returnResponse(req, res, 200, 'success', data.rows);
   }
 
   /**
