@@ -101,6 +101,14 @@ class Database extends Environment {
     return result;
   }
 
+  static async selectAllOrderBy(tableName, column1, value) {
+    const conn = this.dbConnection();
+    const result = await conn.query(` SELECT * from ${tableName} order by ${column1} ${value}`);
+    await conn.end();
+    return result;
+  }
+
+
   static async selectBy2colum(table, column1, operator, value1, column2, value2, logGate) {
     const conn = this.dbConnection();
     const result = await conn.query(`SELECT * FROM ${table} WHERE ${column1}${operator} ${value1} ${logGate} ${column2}='${value2}'`);
