@@ -1,3 +1,5 @@
+import Database from '../database/dbquerie';
+import returnResponse from '../helpers/returnResponse';
 /**
  * @author Tuyisenge Jean Paul
  * @description the class comment contains method for creating a comment, flag and delete a comment/
@@ -9,52 +11,23 @@ class comment {
    * @param {object} res
    * @description Thi is the method for creating a comment /
    */
-  static createComment(req, res) {
+  static async createComment(req, res) {
     const articleid = parseInt(req.params.id, 10);
-    let existArticle = '';
-    let message = '';
-    articles.map((article) => {
-      if (article.id === articleid) {
-        existArticle = article;
-      }
-    });
-    comments.map((newcomment) => {
-      if (req.body.comment === newcomment.comment && articleid === newcomment.articleId) {
-        message = 'Alread exist';
-      }
-    });
-    if (message) {
-      return res.status(409).json({
-        status: '409',
-        message,
-      });
-    }
-    if (existArticle) {
-      let todayDate = new Date();
-      const data = {
-        // id: IdProider(comments),
-        articleId: existArticle.id,
-        comment: req.body.comment,
-        createdOn: todayDate,
-        status: 'unflagging',
-      };
-      comments.push(data);
-      return res.status(201).json({
-        status: '201',
-        message: 'comment added',
-        data: {
-          createdOn: data.createdOn,
-          articleTitle: existArticle.title,
-          article: existArticle.article,
-          comment: data.comment,
-          status: 'unflagging',
-        },
-      });
-    }
-
-    return res.status(404).json({
-      status: '401',
-      message: 'Article not found',
+    let todayDate = new Date();
+    const data = {
+      articleId: articleid,
+      comment: req.body.comment,
+      createdOn: todayDate,
+      flag: 0,
+    };
+    const result = await Database.createComment(data);
+    const resultArticle = await Database.selectBy('articles', 'id', articleid);
+    return returnResponse(req, res, 201, 'Comment Added succesfully', {
+      createdOn: data.createdOn,
+      articleTitle: resultArticle.rows[0].title,
+      article: resultArticle.rows[0].article,
+      comment: data.comment,
+      flag: data.flag,
     });
   }
 

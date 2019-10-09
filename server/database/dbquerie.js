@@ -32,10 +32,10 @@ class Database extends Environment {
     
         CREATE TABLE IF NOT EXISTs comments(
             id SERIAL,
-            articleId INT references articles(id) ON DELETE CASCADE,
+            articleId SERIAL references articles(id) ON DELETE CASCADE,
             comment VARCHAR(500) NOT NULL,
             createdOn DATE NOT NULL,
-            flag INT NOT NULL,
+            flag SERIAL,
             PRIMARY KEY(id));
         `);
     return result;
@@ -61,11 +61,24 @@ class Database extends Environment {
 
   static async createArticle(data) {
     const conn = this.dbConnection();
-    const result = await conn.query(`INSERT INTO articles(creatorid,title, article, createdOn, flag) 
+    const result = await conn.query(`INSERT INTO articles(creatorid,title,article,createdOn,flag) 
     VALUES(
       '${data.creatorid}',
       '${data.title}',
       '${data.article}',
+      CURRENT_TIMESTAMP,
+      '${data.flag}'
+      ) returning *;`);
+    await conn.end();
+    return result;
+  }
+
+  static async createComment(data) {
+    const conn = this.dbConnection();
+    const result = await conn.query(`INSERT INTO comments(articleid,comment,createdon,flag) 
+    VALUES(
+      '${data.articleId}',
+      '${data.comment}',
       CURRENT_TIMESTAMP,
       '${data.flag}'
       ) returning *;`);
@@ -111,7 +124,7 @@ class Database extends Environment {
 
   static async selectBy2colum(table, column1, operator, value1, column2, value2, logGate) {
     const conn = this.dbConnection();
-    const result = await conn.query(`SELECT * FROM ${table} WHERE ${column1}${operator} ${value1} ${logGate} ${column2}='${value2}'`);
+    const result = await conn.query(`SELECT * FROM ${table} WHERE ${column1}${operator} '${value1}' ${logGate} ${column2}='${value2}'`);
     await conn.end();
     return result;
   }
