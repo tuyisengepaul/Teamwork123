@@ -73,6 +73,20 @@ class Database extends Environment {
     return result;
   }
 
+  static async update(tableName, column1, value1, column2, value2, column3, value3) {
+    const conn = this.dbConnection();
+    const result = await conn.query(`update ${tableName} set ${column1}='${value1}',  ${column2} = '${value2}'  WHERE ${column3} = '${value3}' returning *`);
+    await conn.end();
+    return result;
+  }
+
+  static async updateOne(tableName, column1, value1, column2, value2) {
+    const conn = this.dbConnection();
+    const result = await conn.query(`update ${tableName} set ${column1}='${value1}' WHERE ${column2} = '${value2}' returning *`);
+    await conn.end();
+    return result;
+  }
+
   static async selectBy(table, column, value) {
     const conn = this.dbConnection();
     const result = await conn.query(`SELECT * FROM ${table} WHERE ${column}='${value}'`);

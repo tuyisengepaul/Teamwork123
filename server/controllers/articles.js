@@ -1,9 +1,8 @@
-
 import Database from '../database/dbquerie';
-
+import returnResponse from '../helpers/returnResponse';
 /**
  * @description classs this class contains methods for manipulating articles,
- * (Create new article, edit an article and delete);
+ * (Create new article, edit an article, flag an article and delete it);
  */
 class allAboutArticle {
   /**
@@ -12,13 +11,6 @@ class allAboutArticle {
    * @param {object} res
    */
   static async newArticle(req, res) {
-    const existArticle = await Database.selectBy('articles', 'article', req.body.article);
-    if (existArticle.rowCount !== 0) {
-      return res.status(409).json({
-        status: '409',
-        message: 'This article alread exist',
-      });
-    }
     let todayDate = new Date();
     const data = {
       creatorid: req.user.id,
@@ -28,11 +20,7 @@ class allAboutArticle {
       flag: 0,
     };
     const result = await Database.createArticle(data);
-    return res.status(201).json({
-      status: '201',
-      message: 'article successfuly created',
-      data: result.rows[0],
-    });
+    return returnResponse(req, res, 201, 'article successfuly created', result.rows[0]);
   }
 
   /**
@@ -41,31 +29,17 @@ class allAboutArticle {
    * @param {object} res
    * @description this method allows a user to edit his own article
    */
-  static editArticle(req, res) {
-    const { flag } = req.params;
+  static async editArticle(req, res) {
+    let { flag } = req.params;
     const articleid = parseInt(req.params.id, 10);
-    let message = '';
-    articles.map((article) => {
-      if (flag && article.id === articleid) {
-        article.flag += 1;
-        message = 'Article flagged successfuly';
-      } else if (article.id === articleid) {
-        article.title = req.body.title;
-        article.article = req.body.article;
-        message = 'Article updated successfuly';
-      }
-    });
-
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
+    if (!flag) {
+      const result = await Database.update('articles', 'title', req.body.title, 'article', req.body.article, 'id', articleid);
+      return returnResponse(req, res, 201, 'article updated successfuly', result.rows[0]);
     }
-    return res.status(404).json({
-      status: '404',
-      message: 'Article not found',
-    });
+    let flagIt = await Database.selectBy('articles', 'creatorid', articleid);
+    flagIt.rows[0].flag += 1;
+    const result = await Database.updateOne('articles', 'flag', flagIt.rows[0].flag, 'id', articleid);
+    return returnResponse(req, res, 201, 'article flagged successfuly', flagIt.rows[0].flag);
   }
 
   /**
