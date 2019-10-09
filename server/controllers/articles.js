@@ -71,24 +71,11 @@ class allAboutArticle {
    * @param {object} res
    * @description This method is used to get a specific article
    */
-  static getSpecificArticle(req, res) {
+  static async getSpecificArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
-    let data = '';
-    articles.map((article) => {
-      if (article.id === articleid) {
-        data = article;
-      }
-    });
-    if (data) {
-      return res.status(200).json({
-        status: '200',
-        data,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Article not found',
-    });
+
+    const data = await Database.selectBy('articles', 'id', articleid);
+    return returnResponse(req, res, 200, 'success', data.rows);
   }
 }
 
