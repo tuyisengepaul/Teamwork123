@@ -37,25 +37,12 @@ class comment {
  * @param {object} res
  * @description This methods alow the user to flag a comment/
  */
-  static flagComment(req, res) {
+  static async flagComment(req, res) {
     const id = parseInt(req.params.id, 10);
-    let message = '';
-    comments.map((comment) => {
-      if (comment.id === id) {
-        comment.flag += 1;
-        message = comment;
-      }
-    });
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'comment not found',
-    });
+    const result = await Database.selectBy('comments', 'id', id);
+    const flagged = result.rows[0].flag + 1;
+    await Database.updateOne('comments', 'flag', flagged, 'id', id);
+    return returnResponse(req, res, 201, 'Comment flagged succesfully');
   }
 
   /**
