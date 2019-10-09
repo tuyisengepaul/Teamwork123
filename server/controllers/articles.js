@@ -48,25 +48,10 @@ class allAboutArticle {
    * @param {object} res
    * @description This method in the action of deleting an article
    */
-  static deleteArticle(req, res) {
+  static async deleteArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
-    let message = '';
-    articles.map((article, index) => {
-      if (article.id === articleid) {
-        articles.splice(index, 1);
-        message = 'Article deleted successfuly';
-      }
-    });
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Article not found',
-    });
+    const result = await Database.delete('articles', 'id', articleid);
+    return returnResponse(req, res, 201, 'article deleted successfuly');
   }
 
   /**
