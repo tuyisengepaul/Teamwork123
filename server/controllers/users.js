@@ -1,6 +1,8 @@
 import incodePass from 'bcrypt';
+import lodash from 'lodash';
 import Token from '../helpers/token';
 import Database from '../database/dbquerie';
+import returnResponse from '../helpers/returnResponse';
 /**
  * @author Jean Paul Tuyisenge
  * @description This class contains methods for registering user, sign in and fetch user /
@@ -14,14 +16,6 @@ class User {
    */
   static async register(req, res) {
     const Userone = req.body;
-    const exitUser = await Database.selectBy('users', 'email', Userone.email);
-
-    if (exitUser.rowCount !== 0) {
-      return res.status(409).json({
-        status: '409',
-        message: 'user alread exist!',
-      });
-    }
     const data = {
       firstName: Userone.firstName,
       lastName: Userone.lastName,
@@ -33,11 +27,16 @@ class User {
       address: Userone.address,
       type: 'staff',
     };
-    const result = await Database.createUser(data);
-    return res.status(201).json({
-      status: '201',
-      message: 'user added',
-      data: result.rows[0],
+    await Database.createUser(data);
+    return returnResponse(req, res, 201, 'user added', {
+      firstName: Userone.firstName,
+      lastName: Userone.lastName,
+      email: Userone.email,
+      gender: Userone.gender,
+      jobRole: Userone.jobRole,
+      department: Userone.department,
+      address: Userone.address,
+      type: 'staff',
     });
   }
 
@@ -50,39 +49,14 @@ class User {
   static async signin(req, res) {
     let data = '';
     const { email } = req.body;
-    const userData = req.body;
     let token = '';
     const exitUser = await Database.selectBy('users', 'email', email);
-    if (exitUser.rowCount !== 0) {
-      if (exitUser.rows[0].email === userData.email && incodePass.compareSync(userData.password, exitUser.rows[0].password)) {
-        token = Token(email);
-        data = {
-          id: exitUser.rows[0].id,
-          firstName: exitUser.rows[0].firstName,
-          lastName: exitUser.rows[0].lastName,
-          email: exitUser.rows[0].email,
-          password: exitUser.rows[0].password,
-          gender: exitUser.rows[0].gender,
-          jobRole: exitUser.rows[0].jobRole,
-          department: exitUser.rows[0].department,
-          address: exitUser.rows[0].address,
-        };
-      }
-    }
-
-
-    if (!data) {
-      return res.status(404).send({
-        status: 404,
-        message: 'User not found, Incorrect email or password',
-      });
-    }
-    return res.status(200).send({
-      status: '200',
-      message: 'login successfuly',
+    token = Token(email);
+    data = {
       token,
-      data,
-    });
+      jobRole: exitUser.rows[0].jobRole,
+    };
+    return returnResponse(req, res, 200, 'login successfuly', data);
   }
 
   /**
@@ -92,12 +66,14 @@ class User {
  * @description Thi method help the admin to get all the users/
  */
   static async AllUsers(req, res) {
-    const data = await Database.selectAll('users');
-    return res.status(200).json({
-      status: '200',
-      message: 'success',
-      data: data.rows,
-    });
+    const data1 = await Database.selectAll('users');
+    let data = [];
+
+    for (let item = 0; item <= data1.rowCount; item += 1) {
+      let object = lodash.pick(data1.rows[item], ['firstName', 'lastName', 'email', 'gender', 'department', 'address', 'type']);
+      data.push(object);
+    }
+    returnResponse(req, res, 200, 'success', data);
   }
 }
 

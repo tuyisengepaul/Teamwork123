@@ -21,7 +21,6 @@ const isLoggedin = async (req, res, next) => {
   try {
     const decodedToken = jwt.verify(token, process.env.TOKEN_KEYS);
     const exitUser = await Database.selectBy('users', 'email', decodedToken.payLoad);
-    
     req.user = exitUser.rows[0];
     return next();
   } catch (error) {

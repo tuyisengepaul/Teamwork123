@@ -34,19 +34,6 @@ describe('post </api/v1/articles>  create article api', () => {
         done();
       });
   });
-
-  it('should check if article exist', (done) => {
-    chai
-      .request(app)
-      .post('/api/v1/articles')
-      .send(articles[0])
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(409);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
 });
 
 describe('patch </api/v1/articles>  edit Article api', () => {
@@ -70,19 +57,6 @@ describe('patch </api/v1/articles>  edit Article api', () => {
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
-
-  it('should check if article exist', (done) => {
-    chai
-      .request(app)
-      .patch('/api/v1/articles/0')
-      .send(articles[1])
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(403);
         res.body.should.have.be.a('object');
         done();
       });
@@ -155,17 +129,6 @@ describe('patch </api/v1/articles>  delete Article api', () => {
       });
   });
 
-  it('should check if article exist', (done) => {
-    chai
-      .request(app)
-      .delete('/api/v1/articles/0')
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(403);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
   it('should check if any user is allowed to delete others article', (done) => {
     chai
       .request(app)
@@ -192,19 +155,9 @@ describe('Get </api/v1/articles> Get a specific Article api', () => {
         done();
       });
   });
+});
 
-  it('should check if article exist', (done) => {
-    chai
-      .request(app)
-      .get('/api/v1/articles/0')
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
-
+describe(' token verification', () => {
   it('it should verify if there is not athorization in header set', (done) => {
     chai
       .request(app)
@@ -212,7 +165,6 @@ describe('Get </api/v1/articles> Get a specific Article api', () => {
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.have.be.a('object');
-        res.body.should.have.property('error').eql('Please Set The Authorization Header!');
         done();
       });
   });
@@ -225,7 +177,6 @@ describe('Get </api/v1/articles> Get a specific Article api', () => {
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.have.be.a('object');
-        res.body.should.have.property('error').eql('No token provided, Access Denied!');
         done();
       });
   });
@@ -238,7 +189,6 @@ describe('Get </api/v1/articles> Get a specific Article api', () => {
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.have.be.a('object');
-        res.body.should.have.property('error').eql('You provided the invalid token!');
         done();
       });
   });

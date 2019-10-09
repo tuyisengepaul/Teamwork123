@@ -1,5 +1,3 @@
-import IdProider from '../helpers/idprovider';
-
 /**
  * @author Tuyisenge Jean Paul
  * @description the class comment contains method for creating a comment, flag and delete a comment/
@@ -34,7 +32,7 @@ class comment {
     if (existArticle) {
       let todayDate = new Date();
       const data = {
-        id: IdProider(comments),
+        // id: IdProider(comments),
         articleId: existArticle.id,
         comment: req.body.comment,
         createdOn: todayDate,
