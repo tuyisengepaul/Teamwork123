@@ -51,25 +51,10 @@ class comment {
    * @param {object} res
    * @description This method allows admin to delete a flaged comment
    */
-  static deleteComment(req, res) {
+  static async deleteComment(req, res) {
     const commentid = parseInt(req.params.id, 10);
-    let message = '';
-    comments.map((comment, index) => {
-      if (comment.id === commentid && comment.flag > 0) {
-        comments.splice(index, 1);
-        message = 'comment deleted successfuly';
-      }
-    });
-    if (message) {
-      return res.status(200).json({
-        status: '200',
-        message,
-      });
-    }
-    return res.status(404).json({
-      status: '404',
-      message: 'Imposible to delete unflagging or unexistence comment',
-    });
+    const result = await Database.delete('comments', 'id', commentid);
+    return returnResponse(req, res, 201, 'Comment deleted succesfully');
   }
 }
 
