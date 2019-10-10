@@ -82,7 +82,7 @@ describe('patch </api/v1/articles>  edit Article api', () => {
     chai
       .request(app)
       .patch('/api/v1/articles/')
-      .send(articles[1])
+      .send(articles[0])
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(404);

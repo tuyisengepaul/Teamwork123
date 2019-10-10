@@ -21,12 +21,12 @@ const createAllUserTest = async () => {
   await conn.query(`INSERT INTO 
   users(firstname, lastname, email, password, gender, jobrole, department,address,type) 
   VALUES
-  ('Karangwa','Joel','karangwajoel@gmail.com','Pwd@123.','Male','IT','ICT','KK 34 ave','staff'),
-  ('Kaberuka','Paul','kabepaul@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Murekatete','Innocente','mtete@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Bugingo','Aime','bugingo@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Karinganire','Epa','kaiepa@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Mutesi','Yvette','myevette@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff')`);
+  ('Karangwa','Joel','karangwajoel@gmail.com','$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK','Male','IT','ICT','KK 34 ave','staff'),
+  ('Kaberuka','Paul','kabepaul@gmail.com','$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK','Male','Engineer','Engineering','Kigali','staff'),
+  ('Murekatete','Innocente','mtete@gmail.com','$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK','Male','Engineer','Engineering','Kigali','staff'),
+  ('Bugingo','Aime','bugingo@gmail.com','$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK','Male','Engineer','Engineering','Kigali','staff'),
+  ('Karinganire','Epa','kaiepa@gmail.com','$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK','Male','Engineer','Engineering','Kigali','staff'),
+  ('Mutesi','Yvette','myevette@gmail.com','$2b$10$xMSpgNoUvSCe56zupmT8heG1VJJfiNdF81SK6fgAQS9lnJ/wLSAYK','Male','Engineer','Engineering','Kigali','staff')`);
 
   await conn.end();
 };
