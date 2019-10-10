@@ -25,7 +25,7 @@ class Availability {
 
   static async commentExist(req, res, next) {
     const articleid = parseInt(req.params.id, 10);
-    const result = await Database.selectBy2colum('comments', 'comment', '=', req.body.comment, 'articleid ', articleid, 'and');
+    const result = await Database.selectBy2colum('comments', 'comment', '=', `${req.body.comment}`, 'articleid', articleid, 'and');
     if (result.rowCount > 0) {
       return returnResponse(req, res, 409, 'Comment alread exist');
     }

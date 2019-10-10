@@ -9,7 +9,7 @@ class loggedinUser {
     }
     return res.status(403).json({
       status: '403',
-      message: 'you are not allowed this kind of request only admin',
+      message: 'you are not allowed this kind of request',
     });
   }
 
