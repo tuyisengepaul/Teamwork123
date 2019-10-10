@@ -23,7 +23,7 @@ class Database extends Environment {
 
             CREATE TABLE IF NOT EXISTs articles(
                 id SERIAL,
-                creatorid INT references users(id) ON DELETE CASCADE,
+                creatorid SERIAL references users(id) ON DELETE CASCADE,
                 title VARCHAR(500) NOT NULL,
                 article VARCHAR(500) NOT NULL,
                 createdOn DATE NOT NULL,
@@ -35,7 +35,7 @@ class Database extends Environment {
             articleId SERIAL references articles(id) ON DELETE CASCADE,
             comment VARCHAR(500) NOT NULL,
             createdOn DATE NOT NULL,
-            flag SERIAL,
+            flag INT NOT NULL,
             PRIMARY KEY(id));
         `);
     return result;

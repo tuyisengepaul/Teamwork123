@@ -34,12 +34,12 @@ class allAboutArticle {
     const articleid = parseInt(req.params.id, 10);
     if (!flag) {
       const result = await Database.update('articles', 'title', req.body.title, 'article', req.body.article, 'id', articleid);
-      return returnResponse(req, res, 201, 'article updated successfuly', result.rows[0]);
+      return returnResponse(req, res, 200, 'article updated successfuly', result.rows[0]);
     }
     let flagIt = await Database.selectBy('articles', 'creatorid', articleid);
     flagIt.rows[0].flag += 1;
     const result = await Database.updateOne('articles', 'flag', flagIt.rows[0].flag, 'id', articleid);
-    return returnResponse(req, res, 201, 'article flagged successfuly', flagIt.rows[0].flag);
+    return returnResponse(req, res, 200, 'article flagged successfuly', flagIt.rows[0].flag);
   }
 
   /**
@@ -51,7 +51,7 @@ class allAboutArticle {
   static async deleteArticle(req, res) {
     const articleid = parseInt(req.params.id, 10);
     const result = await Database.delete('articles', 'id', articleid);
-    return returnResponse(req, res, 201, 'article deleted successfuly');
+    return returnResponse(req, res, 200, 'article deleted successfuly');
   }
 
   /**

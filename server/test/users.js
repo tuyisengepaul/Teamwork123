@@ -3,27 +3,13 @@ import chai from 'chai';
 import app from '../index';
 import user from './mockdata/users';
 import Token from '../helpers/token';
-import Environment from '../config/database';
+// import Environment from '../config/database';
 
-const conn = Environment.dbConnection();
+// const conn = Environment.dbConnection();
 
 chai.use(chaiHttp);
 chai.should();
 
-const createAllUserTest = async () => {
-  await conn.query(`INSERT INTO 
-  users(firstname, lastname, email, password, gender, jobrole, department,address,type) 
-  VALUES
-  ('Karangwa','Joel','karangwajoel@gmail.com','Pwd@123.','Male','IT','ICT','KK 34 ave','staff'),
-  ('Kaberuka','Paul','kabepaul@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Murekatete','Innocente','mtete@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Bugingo','Aime','bugingo@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Karinganire','Epa','kaiepa@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff'),
-  ('Mutesi','Yvette','myevette@gmail.com','Pwd@123.','Male','Engineer','Engineering','Kigali','staff')`);
-
-  await conn.end();
-};
-createAllUserTest();
 const adminToken = Token('admin@gmail.com');
 const staffToken = Token('bugingo​@gmail.com');
 
