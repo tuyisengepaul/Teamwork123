@@ -2,21 +2,6 @@ import Environment from '../config/database';
 
 const conn = Environment.dbConnection();
 
-const createAllCommentsTest = async () => {
-  await conn.query(`INSERT INTO 
-  comments(articleid,comment,createdon,flag) 
-  VALUES
-  (3,'I like this article','2011-09-27T18:14:54.341Z',0),
-  (4,'I like this article','2012-09-27T18:14:54.341Z',0),
-  (5,'I like this article','2013-09-27T18:14:54.341Z',0),
-  (6,'I like this article','2014-09-27T18:14:54.341Z',0),
-  (6,'I like this article','2014-09-27T18:14:54.341Z',0),
-  (7,'I like this article','2015-09-27T18:14:54.341Z',1),
-  (3,'I like this article','2016-09-27T18:14:54.341Z',1)`);
-
-  await conn.end();
-};
-
 const createAllUserTest = async () => {
   await conn.query(`INSERT INTO 
   users(firstname, lastname, email, password, gender, jobrole, department,address,type) 
@@ -44,6 +29,21 @@ const createAllArticleTest = async () => {
 
   await conn.end();
 };
+
+const createAllCommentsTest = async () => {
+  await conn.query(`INSERT INTO 
+  comments(articleid,comment,createdon,flag) 
+  VALUES
+  (3,'I like this article','2011-09-27T18:14:54.341Z',0),
+  (4,'I like this article','2012-09-27T18:14:54.341Z',0),
+  (5,'I like this article','2013-09-27T18:14:54.341Z',0),
+  (6,'I like this article','2014-09-27T18:14:54.341Z',0),
+  (6,'I like this article','2014-09-27T18:14:54.341Z',0),
+  (7,'I like this article','2015-09-27T18:14:54.341Z',1),
+  (3,'I like this article','2016-09-27T18:14:54.341Z',1)`);
+  await conn.end();
+};
+
 createAllUserTest();
 createAllArticleTest();
 createAllCommentsTest();

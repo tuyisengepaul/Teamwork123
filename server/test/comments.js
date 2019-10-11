@@ -104,18 +104,6 @@ describe('delete </api/v1/comments>  delete comment api', () => {
         done();
       });
   });
-
-  it('should check if a staff is allowed to delete', (done) => {
-    chai
-      .request(app)
-      .delete('/api/v1/comments/3')
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(403);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
   it('flagged comment should be deleted', (done) => {
     chai
       .request(app)
