@@ -42,7 +42,7 @@ class comment {
     const result = await Database.selectBy('comments', 'id', id);
     const flagged = result.rows[0].flag + 1;
     await Database.updateOne('comments', 'flag', flagged, 'id', id);
-    return returnResponse(req, res, 201, 'Comment flagged succesfully');
+    return returnResponse(req, res, 200, 'Comment flagged succesfully');
   }
 
   /**
@@ -54,7 +54,7 @@ class comment {
   static async deleteComment(req, res) {
     const commentid = parseInt(req.params.id, 10);
     const result = await Database.delete('comments', 'id', commentid);
-    return returnResponse(req, res, 201, 'Comment deleted succesfully');
+    return returnResponse(req, res, 200, 'Comment deleted succesfully');
   }
 }
 

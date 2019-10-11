@@ -6,11 +6,13 @@ import Token from '../helpers/token';
 
 chai.use(chaiHttp);
 chai.should();
+
+
 const admintoken = Token('admin@gmail.com');
 const staffToken = Token('bugingo​@gmail.com');
 
 describe('post </api/v1/comments>  create comment api', () => {
-  it('acomment should be created', (done) => {
+  it('a comment should be created', (done) => {
     chai
       .request(app)
       .post('/api/v1/comments/1')
@@ -64,10 +66,10 @@ describe('post </api/v1/comments>  create comment api', () => {
 });
 
 describe('patch </api/v1/comments>  flag comment api', () => {
-  it('acomment should be flagged', (done) => {
+  it('a comment should be flagged', (done) => {
     chai
       .request(app)
-      .patch('/api/v1/comments/1')
+      .patch('/api/v1/comments/8')
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(200);
@@ -90,17 +92,6 @@ describe('patch </api/v1/comments>  flag comment api', () => {
 });
 
 describe('delete </api/v1/comments>  delete comment api', () => {
-  it('flagged acomment should be deleted', (done) => {
-    chai
-      .request(app)
-      .delete('/api/v1/comments/3')
-      .set('Authorization', `Bearer ${admintoken}`)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
 
   it('should check if comment exist', (done) => {
     chai
@@ -121,6 +112,17 @@ describe('delete </api/v1/comments>  delete comment api', () => {
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(403);
+        res.body.should.have.be.a('object');
+        done();
+      });
+  });
+  it('flagged comment should be deleted', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v1/comments/8')
+      .set('Authorization', `Bearer ${admintoken}`)
+      .end((err, res) => {
+        res.should.have.status(200);
         res.body.should.have.be.a('object');
         done();
       });
