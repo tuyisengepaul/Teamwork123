@@ -1,10 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
-import swaggerDoc from '../swagger';
-import usersRouter from './routes/users';
-import articleRouter from './routes/articles';
-import comment from './routes/comments';
+import swaggerDoc from '../../swagger';
+import usersRouter from './users';
+import articleRouter from './articles';
+import comment from './comments';
 
 const app = express();
 app.use(express.json());
