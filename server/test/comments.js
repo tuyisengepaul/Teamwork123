@@ -77,7 +77,6 @@ describe('patch </api/v1/comments>  flag comment api', () => {
         done();
       });
   });
-
   it('should check if comment exist', (done) => {
     chai
       .request(app)
