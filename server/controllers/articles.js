@@ -75,7 +75,12 @@ class allAboutArticle {
     const articleid = parseInt(req.params.id, 10);
 
     const data = await Database.selectBy('articles', 'id', articleid);
-    return returnResponse(req, res, 200, 'success', data.rows);
+    const data1 = await Database.selectBy('comments', 'articleid', articleid);
+    const result = {
+      Article: data.rows,
+      comment: data1.rows,
+    };
+    return returnResponse(req, res, 200, 'success', result);
   }
 
   /**

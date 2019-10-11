@@ -4,10 +4,8 @@ import app from '../index';
 import articles from './mockdata/articles';
 import Token from '../helpers/token';
 
-
 chai.use(chaiHttp);
 chai.should();
-
 
 const staffToken = Token('karangwajoel@gmail.com');
 
@@ -69,32 +67,6 @@ describe('patch </api/v1/articles>  edit Article api', () => {
     chai
       .request(app)
       .patch('/api/v1/articles/1')
-      .send(articles[1])
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(403);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
-
-  it('should check if parameter is valid', (done) => {
-    chai
-      .request(app)
-      .patch('/api/v1/articles/')
-      .send(articles[1])
-      .set('Authorization', `Bearer ${staffToken}`)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
-
-  it('should check if parameters are valid', (done) => {
-    chai
-      .request(app)
-      .patch('/api/v1/articles/ /')
       .send(articles[1])
       .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {

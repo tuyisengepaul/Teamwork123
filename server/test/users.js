@@ -3,24 +3,23 @@ import chai from 'chai';
 import app from '../index';
 import user from './mockdata/users';
 import Token from '../helpers/token';
-// import Environment from '../config/database';
 
-// const conn = Environment.dbConnection();
 
 chai.use(chaiHttp);
 chai.should();
 
 const adminToken = Token('admin@gmail.com');
-const staffToken = Token('bugingo​@gmail.com');
+const staffToken = Token('bugingo@gmail.com');
 
 describe('POST </>  Welcome message', () => {
-  it('User should get welcome message', () => {
+  it('User should get welcome message', (done) => {
     chai
       .request(app)
       .get('/')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.have.be.a('object');
+        done();
       });
   });
 });
@@ -31,7 +30,7 @@ describe('POST </api/v1/auth/signup>  sign up', () => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
-      .send(user[0])
+      .send(user[1])
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.have.be.a('object');
@@ -88,7 +87,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
         done();
       });
   });
-  
+
   it('check if credentialss are corrrect', (done) => {
     chai
       .request(app)
@@ -103,18 +102,7 @@ describe('POST <api/v1/auth/signin>  sign in', () => {
 });
 
 describe('GET </api/v1/auth/>  Get all Users', () => {
-  it('Admin should get all users', () => {
-    chai
-      .request(app)
-      .get('/api/v1/auth/')
-      .set('Authorization', `Bearer ${adminToken}`)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.be.a('object');
-      });
-  });
-
-  it('Checker if staff is allowed to get all users', () => {
+  it('Checker if staff is allowed to get all users', (done) => {
     chai
       .request(app)
       .get('/api/v1/auth/')
@@ -122,6 +110,18 @@ describe('GET </api/v1/auth/>  Get all Users', () => {
       .end((err, res) => {
         res.should.have.status(403);
         res.body.should.have.be.a('object');
+        done();
+      });
+  });
+  it('Admin should get all users', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/auth/')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.be.a('object');
+        done();
       });
   });
 });

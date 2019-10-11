@@ -77,7 +77,6 @@ describe('patch </api/v1/comments>  flag comment api', () => {
         done();
       });
   });
-
   it('should check if comment exist', (done) => {
     chai
       .request(app)
@@ -98,18 +97,6 @@ describe('delete </api/v1/comments>  delete comment api', () => {
       .request(app)
       .delete('/api/v1/comments/0')
       .set('Authorization', `Bearer ${admintoken}`)
-      .end((err, res) => {
-        res.should.have.status(403);
-        res.body.should.have.be.a('object');
-        done();
-      });
-  });
-
-  it('should check if a staff is allowed to delete', (done) => {
-    chai
-      .request(app)
-      .delete('/api/v1/comments/3')
-      .set('Authorization', `Bearer ${staffToken}`)
       .end((err, res) => {
         res.should.have.status(403);
         res.body.should.have.be.a('object');

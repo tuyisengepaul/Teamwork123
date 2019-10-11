@@ -1,8 +1,8 @@
 const user = [
   {
-    firstName: 'Tuyisenge',
-    lastName: 'Jean Paul',
-    email: 'tuyisengepaul@gmail.com',
+    firstName: 'Karangwa',
+    lastName: 'Joel',
+    email: 'karangwajoel@gmail.com',
     password: 'ThisP122.',
     gender: 'Male',
     jobRole: 'Manger',
@@ -10,14 +10,14 @@ const user = [
     address: 'Kigali',
   },
   {
-    firstName: 'bugingo​',
-    lastName: 'aime',
-    email: 'bugingo​@gmail.com',
-    password: 'Acgfgjfg123ok',
-    gender: 'male',
-    jobRole: 'manager',
-    department: 'it',
-    address: 'gikondo',
+    firstName: 'Karinganire',
+    lastName: 'Joseph',
+    email: 'karinganire5@gmail.com',
+    password: 'Password123.',
+    gender: 'Male',
+    jobRole: 'Manager',
+    department: 'IT',
+    address: 'Gikondo'
   },
   {
     email: 'admin@gmail.com',
